@@ -12,6 +12,41 @@ code {
     monospace;
 }
 
+.pageContent {
+  margin: 2vw;
+}
+
+.topNine {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.5vh;
+  background-color: aliceblue;
+  border: 2px solid #009fff;
+}
+
+.profileWidget {
+  text-align: center;
+  height: 90%;
+  width: 90%;
+  max-width: 90%;
+  max-height: 90%;
+  margin: 2vh auto;
+  border: 2px solid #009fff;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.widgetAvatar {
+  width: 100%;
+  height: 100%;
+}
+
+.widgetAvatar img {
+  width: 75%;
+  height: auto;
+  margin-bottom: 10%;
+}
+
 .circleIcon {
   margin: 3vh auto;
   height: 120px;
@@ -113,5 +148,35 @@ code {
 
 .hotlink {
   color: #009fff;
+}
+
+.profile {
+  border: 2px solid #009fff;
+  border-radius: 2px;
+  background-color: aliceblue;
+}
+
+.profileGallery {
+  color: white;
+  background-color: #282c34;
+  padding: 2%;
+  margin: 0;
+  width: 100%;
+}
+
+.profileContent {
+  border-top: 2px solid #009fff;
+  border-bottom: 2px solid #009fff;
+  background-color: aliceblue;
+  display: flex;
+}
+
+.profileInfo {
+  width: 100%;
+  padding: 2%;
+}
+
+.profileMusic {
+  padding: 2%;
 }
 
