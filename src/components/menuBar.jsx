@@ -33,7 +33,7 @@ class MenuBar extends Component {
                             </ul>
                             <ul className="navbar-nav ml-auto">
                                 <li className="nav-item">
-                                    <NavLink to="/login" className="nav-link">Logout</NavLink>
+                                    <NavLink to="/login" onClick={this.logout} className="nav-link">Logout</NavLink>
                                 </li>
                             </ul>
                         </div>
@@ -42,7 +42,7 @@ class MenuBar extends Component {
             )
         } else {
             return (
-                <Fragment className="menu">
+                <Fragment>
                     <nav className="navbar navbar-expand-md navbar-dark" style={{backgroundColor: "#009fff"}}>
                         <NavLink className="navbar-brand" to="/home"><b>musicmatch</b></NavLink>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"

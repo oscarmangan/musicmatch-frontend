@@ -18,7 +18,7 @@ class SignupOne extends Component {
                         <input type="text" placeholder="Username" required/>
                         <input type="password" placeholder="Password" required/>
                         <input type="password" placeholder="Confirm Password" required/>
-                        <NavLink to="/signupTwo"><button className="formBtn"><span>Next</span></button></NavLink>
+                        <NavLink to="/signup/2"><button className="formBtn"><span>Next</span></button></NavLink>
                         <small id="passwordHelpBlock" className="form-text text-muted">
                             Your password cannot be too similar to previous information entered.
                         </small>
