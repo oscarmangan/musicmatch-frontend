@@ -16,8 +16,7 @@ class InstrumentsForm extends Component {
                     <div className="row">
                         <div className="col-sm">
                             <label className="preferenceBtn">
-                                <input type="checkbox" autoComplete="off"/>
-                                Accordian<input type="text" maxLength="2" placeholder="XP"/>
+                                <input type="checkbox" autoComplete="off"/>Accordian
                             </label>
                         </div>
                         <div className="col-sm">

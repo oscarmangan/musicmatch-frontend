@@ -33,7 +33,7 @@ class MenuBar extends Component {
                             </ul>
                             <ul className="navbar-nav ml-auto">
                                 <li className="nav-item">
-                                    <NavLink to="/login" onClick={this.logout} className="nav-link">Logout</NavLink>
+                                    <NavLink to="/login" onClick={this.props.logout} className="nav-link">Logout</NavLink>
                                 </li>
                             </ul>
                         </div>
@@ -52,7 +52,7 @@ class MenuBar extends Component {
                         <div className="collapse navbar-collapse" id="navbarNav">
                             <ul className="navbar-nav ml-auto">
                                 <li className="nav-item">
-                                    <NavLink to="/signupOne" className="nav-link">Signup</NavLink>
+                                    <NavLink to="/signup/1" className="nav-link">Signup</NavLink>
                                 </li>
                                 <li className="nav-item">
                                     <NavLink to="/login" className="nav-link">Login</NavLink>

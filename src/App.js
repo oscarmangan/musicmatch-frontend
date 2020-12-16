@@ -67,8 +67,11 @@ class App extends Component {
     Logout functionality, the token is cleared from local storage. The state is reset to
     being unauthorised and the application is closed off from the user
      */
-    logout = (e) => {
-
+    logout = () => {
+        localStorage.clear();
+        this.setState({
+            isAuthorised: false
+        })
     }
 
     /*
@@ -79,7 +82,7 @@ class App extends Component {
             <BrowserRouter>
                 {!this.state.isAuthorised ? <Redirect to='/login'/> : <Redirect to='/home'/>}
                     <Fragment>
-                        <MenuBar auth={this.state.isAuthorised}/>
+                        <MenuBar auth={this.state.isAuthorised} logout={this.logout}/>
                     </Fragment>
                     <div className="pageContent">
                         <Switch>
