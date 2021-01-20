@@ -6,12 +6,12 @@ import React, {Fragment, Component} from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import MenuBar from "./components/menuBar";
 import LoginForm from "./components/loginForm";
-import SignupOne from "./components/signupOne";
-import SignupTwo from "./components/signupTwo";
+import Signup from "./components/signup";
 import Homepage from "./components/homepage";
 import Discover from "./components/discover";
 import Profile from "./components/profile";
 import Search from "./components/search";
+import SignupTwo from "./components/signupTwo";
 
 class App extends Component {
     constructor(props) {
@@ -106,11 +106,8 @@ class App extends Component {
                                     onClick={this.login}
                                 />
                             </Route>
-                            <Route path='/signup/1'>
-                                <SignupOne />
-                            </Route>
-                            <Route path='/signup/2'>
-                                <SignupTwo />
+                            <Route path='/signup'>
+                                <Signup/>
                             </Route>
                         </Switch>
                     </div>

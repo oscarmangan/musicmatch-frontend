@@ -45,7 +45,7 @@ class LoginForm extends Component {
                             className="formBtn">
                             <span>Login</span>
                         </button>
-                        <p>Not a member? <NavLink to="/signup/1">Create an account</NavLink></p>
+                        <p>Not a member? <NavLink to="/signup">Create an account</NavLink></p>
                         <p>Forgot your password?</p>
                     </div>
                 </form>
@@ -54,4 +54,4 @@ class LoginForm extends Component {
     }
 }
 
-export default LoginForm
+export default LoginForm;

@@ -5,7 +5,14 @@ import mmIcon from "../static/mm_icon_gradient.png";
 class SignupOne extends Component {
     state = {}
 
+    nextForm = e => {
+        e.preventDefault();
+        this.props.nextStage();
+    }
+
     render() {
+        const {credentials, handleChange} = this.props;
+
         return (
             <Fragment>
                 <div className="circleIcon">
@@ -14,11 +21,25 @@ class SignupOne extends Component {
                 <form>
                     <div className="appForm">
                         <h2>Sign up</h2>
-                        <input type="text" placeholder="Email" required/>
-                        <input type="text" placeholder="Username" required/>
-                        <input type="password" placeholder="Password" required/>
-                        <input type="password" placeholder="Confirm Password" required/>
-                        <NavLink to="/signup/2"><button className="formBtn"><span>Next</span></button></NavLink>
+                        <input type="text"
+                               placeholder="Email"
+                               onChange={handleChange('email')}
+                               defaultValue={credentials.email} required
+                        />
+                        <input type="text"
+                               placeholder="Username"
+                               onChange={handleChange('username')}
+                               defaultValue={credentials.username} required
+                        />
+                        <input type="password"
+                               placeholder="Password"
+                               onChange={handleChange('password')} required
+                        />
+                        <input type="password"
+                               placeholder="Confirm Password"
+                               onChange={handleChange('confPassword')} required
+                        />
+                        <button onClick={this.nextForm} className="formBtn"><span>Next</span></button>
                         <small id="passwordHelpBlock" className="form-text text-muted">
                             Your password cannot be too similar to previous information entered.
                         </small>

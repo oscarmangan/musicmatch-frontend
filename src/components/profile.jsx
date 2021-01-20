@@ -2,7 +2,19 @@ import React, { Component, Fragment } from 'react';
 
 class Profile extends Component {
     state = {
-
+        info: {
+            username: "",
+            email: "",
+            phone: "",
+            town: "",
+            age: "",
+            bio: ""
+        },
+        musicInfo: {
+            genres: [],
+            instruments: [],
+            band_exp: ""
+        }
     }
 
     render() {
@@ -16,29 +28,25 @@ class Profile extends Component {
                     <div className="profileContent">
                         <div className="profileInfo">
                             <h3>Info</h3>
-                            <h6>Username: {this.props.uname}</h6>
-                            <h6>Email: {this.props.email}</h6>
-                            <h6>Phone Number: 089 123123123</h6>
-                            <h6>Town: Dublin</h6>
-                            <h6>Age: 21</h6>
+                            <h6>Username: {this.state.info.username}</h6>
+                            <h6>Email: {this.state.info.email}</h6>
+                            <h6>Phone Number: {this.state.info.phone}</h6>
+                            <h6>Town: {this.state.info.town}</h6>
+                            <h6>Age: {this.state.info.age}</h6>
                             <h6>Bio</h6>
-                            <p>This is a sample bio, the user can input a little description about themselves
-                            along with links to any social media if they wish to do so.</p>
+                            <p>{this.state.info.bio}</p>
                         </div>
                         <div className="profileInfo">
                             <h3>Music</h3>
                             <h6>Genres:</h6>
                             <ul>
-                                <li>Rock</li>
-                                <li>Metal</li>
-                                <li>Electronic</li>
+
                             </ul>
                             <h6>Instruments:</h6>
                             <ul>
-                                <li>Electric Guitar - 3 years</li>
-                                <li>Acoustic Guitar - 6 years</li>
+
                             </ul>
-                            <h6>Band Experience: 3 years</h6>
+                            <h6>Band Experience: {this.state.musicInfo.band_exp}</h6>
                         </div>
                     </div>
                     <div className="profileMusic">

@@ -6,6 +6,8 @@ class InstrumentsForm extends Component {
     }
 
     render() {
+        const {onInstrumentChange} = this.props;
+
         return (
             <Fragment>
                 <h4>Instruments</h4>
@@ -16,119 +18,119 @@ class InstrumentsForm extends Component {
                     <div className="row">
                         <div className="col-sm">
                             <label className="preferenceBtn">
-                                <input type="checkbox" autoComplete="off"/>Accordian
+                                <input type="checkbox" onChange={onInstrumentChange} autoComplete="off"/>Accordian
                             </label>
                         </div>
                         <div className="col-sm">
                             <label className="preferenceBtn">
-                                <input type="checkbox" autoComplete="off"/>Acoustic Guitar
+                                <input type="checkbox" onChange={onInstrumentChange} autoComplete="off"/>Acoustic Guitar
                             </label>
                         </div>
                         <div className="col-sm">
                             <label className="preferenceBtn">
-                                <input type="checkbox" autoComplete="off"/>Banjo
-                            </label>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm">
-                            <label className="preferenceBtn">
-                                <input type="checkbox" autoComplete="off"/>Bass Guitar
-                            </label>
-                        </div>
-                        <div className="col-sm">
-                            <label className="preferenceBtn">
-                                <input type="checkbox" autoComplete="off"/>Cello
-                            </label>
-                        </div>
-                        <div className="col-sm">
-                            <label className="preferenceBtn">
-                                <input type="checkbox" autoComplete="off"/>Clarinet
+                                <input type="checkbox" onChange={onInstrumentChange} autoComplete="off"/>Banjo
                             </label>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-sm">
                             <label className="preferenceBtn">
-                                <input type="checkbox" autoComplete="off"/>Double Bass
+                                <input type="checkbox" onChange={onInstrumentChange} autoComplete="off"/>Bass Guitar
                             </label>
                         </div>
                         <div className="col-sm">
                             <label className="preferenceBtn">
-                                <input type="checkbox" autoComplete="off"/>Drums
+                                <input type="checkbox" onChange={onInstrumentChange} autoComplete="off"/>Cello
                             </label>
                         </div>
                         <div className="col-sm">
                             <label className="preferenceBtn">
-                                <input type="checkbox" autoComplete="off"/>Electric Guitar
-                            </label>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm">
-                            <label className="preferenceBtn">
-                                <input type="checkbox" autoComplete="off"/>Flute
-                            </label>
-                        </div>
-                        <div className="col-sm">
-                            <label className="preferenceBtn">
-                                <input type="checkbox" autoComplete="off"/>Harp
-                            </label>
-                        </div>
-                        <div className="col-sm">
-                            <label className="preferenceBtn">
-                                <input type="checkbox" autoComplete="off"/>Mandelin
+                                <input type="checkbox" onChange={onInstrumentChange} autoComplete="off"/>Clarinet
                             </label>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-sm">
                             <label className="preferenceBtn">
-                                <input type="checkbox" autoComplete="off"/>Piano
+                                <input type="checkbox" onChange={onInstrumentChange} autoComplete="off"/>Double Bass
                             </label>
                         </div>
                         <div className="col-sm">
                             <label className="preferenceBtn">
-                                <input type="checkbox" autoComplete="off"/>Saxophone
+                                <input type="checkbox" onChange={onInstrumentChange} autoComplete="off"/>Drums
                             </label>
                         </div>
                         <div className="col-sm">
                             <label className="preferenceBtn">
-                                <input type="checkbox" autoComplete="off"/>Trombone
-                            </label>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm">
-                            <label className="preferenceBtn">
-                                <input type="checkbox" autoComplete="off"/>Trumpet
-                            </label>
-                        </div>
-                        <div className="col-sm">
-                            <label className="preferenceBtn">
-                                <input type="checkbox" autoComplete="off"/>Tuba
-                            </label>
-                        </div>
-                        <div className="col-sm">
-                            <label className="preferenceBtn">
-                                <input type="checkbox" autoComplete="off"/>Viola
+                                <input type="checkbox" onChange={onInstrumentChange} autoComplete="off"/>Electric Guitar
                             </label>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-sm">
                             <label className="preferenceBtn">
-                                <input type="checkbox" autoComplete="off"/>Violin
+                                <input type="checkbox" onChange={onInstrumentChange} autoComplete="off"/>Flute
                             </label>
                         </div>
                         <div className="col-sm">
                             <label className="preferenceBtn">
-                                <input type="checkbox" autoComplete="off"/>Vocalist
+                                <input type="checkbox" onChange={onInstrumentChange} autoComplete="off"/>Harp
                             </label>
                         </div>
                         <div className="col-sm">
                             <label className="preferenceBtn">
-                                <input type="checkbox" autoComplete="off"/>Xylophone
+                                <input type="checkbox" onChange={onInstrumentChange} autoComplete="off"/>Mandelin
+                            </label>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-sm">
+                            <label className="preferenceBtn">
+                                <input type="checkbox" onChange={onInstrumentChange} autoComplete="off"/>Piano
+                            </label>
+                        </div>
+                        <div className="col-sm">
+                            <label className="preferenceBtn">
+                                <input type="checkbox" onChange={onInstrumentChange} autoComplete="off"/>Saxophone
+                            </label>
+                        </div>
+                        <div className="col-sm">
+                            <label className="preferenceBtn">
+                                <input type="checkbox" onChange={onInstrumentChange} autoComplete="off"/>Trombone
+                            </label>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-sm">
+                            <label className="preferenceBtn">
+                                <input type="checkbox" onChange={onInstrumentChange} autoComplete="off"/>Trumpet
+                            </label>
+                        </div>
+                        <div className="col-sm">
+                            <label className="preferenceBtn">
+                                <input type="checkbox" onChange={onInstrumentChange} autoComplete="off"/>Tuba
+                            </label>
+                        </div>
+                        <div className="col-sm">
+                            <label className="preferenceBtn">
+                                <input type="checkbox" onChange={onInstrumentChange} autoComplete="off"/>Viola
+                            </label>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-sm">
+                            <label className="preferenceBtn">
+                                <input type="checkbox" onChange={onInstrumentChange} autoComplete="off"/>Violin
+                            </label>
+                        </div>
+                        <div className="col-sm">
+                            <label className="preferenceBtn">
+                                <input type="checkbox" onChange={onInstrumentChange} autoComplete="off"/>Vocalist
+                            </label>
+                        </div>
+                        <div className="col-sm">
+                            <label className="preferenceBtn">
+                                <input type="checkbox" onChange={onInstrumentChange} autoComplete="off"/>Xylophone
                             </label>
                         </div>
                     </div>
