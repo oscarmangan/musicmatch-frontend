@@ -4,6 +4,11 @@ import mmIcon from '../static/mm_icon_gradient.png';
 class SignupThree extends Component {
     state = {}
 
+    finishSignup = e => {
+        e.preventDefault();
+        this.props.register();
+    }
+
     render() {
         const {miscInfo, handleChange, handleKeyUp} = this.props;
 
@@ -30,6 +35,7 @@ class SignupThree extends Component {
                                 placeholder="Bio"
                                 rows="8"
                         />
+                        <button onClick={this.finishSignup} className="formBtn"><span>Finish</span></button>
                     </div>
                 </form>
             </Fragment>

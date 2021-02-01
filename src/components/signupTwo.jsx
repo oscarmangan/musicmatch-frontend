@@ -2,11 +2,19 @@ import React, { Component, Fragment} from "react";
 import mmIcon from '../static/mm_icon_gradient.png';
 import InstrumentsForm from "./instrumentsForm";
 import GenresForm from "./genresForm";
+import {Button, Modal} from "react-bootstrap";
 
 class SignupTwo extends Component {
     state = {
         genreCount: 0,
-        instrCount: 0
+        instrCount: 0,
+        show: false,
+        instruments: [
+
+        ],
+        genres: [
+
+        ]
     }
 
     nextForm = e => {
@@ -14,6 +22,17 @@ class SignupTwo extends Component {
         if(this.checkboxValidation()){
             this.props.nextStage();
         }
+    }
+
+    backForm = e => {
+        e.preventDefault();
+        this.props.prevStage();
+    }
+
+    handleModal = display => {
+        this.setState({
+            show:display
+        });
     }
 
     //function to increment or decrement the number of boxes checked
@@ -37,6 +56,9 @@ class SignupTwo extends Component {
             this.setState((prevState) => ({
                 instrCount: prevState.instrCount + 1
             }));
+            this.setState({
+                instruments: [...this.state.instruments, e.target.value]
+            });
             console.log(this.state.instrCount);
         } else {
             this.setState((prevState) => ({
@@ -60,14 +82,45 @@ class SignupTwo extends Component {
         }
     }
 
+    getExperience = () => {
+
+    }
+
     render() {
         const {handleChange, handleKeyUp} = this.props;
+
+        this.componentWillMount = () => {
+            window.onpopstate = e => {
+                this.backForm(e);
+            }
+        }
 
         return (
             <Fragment>
                 <div className="circleIcon">
                     <img className="appIcon" alt="Musicmatch icon" src={mmIcon}/>
                 </div>
+                <Modal show={this.state.show} onHide={() => this.handleModal(false)}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Instrument Experience</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <p>Please input your level of experience (in years) for:</p>
+                        {this.state.instruments.map(instrument => {
+                            return(
+                                <div>
+                                    <h6>{instrument}</h6>
+                                    <input type="number"
+                                    placeholder="XP"/>
+                                </div>
+                            )
+                        })}
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={() => this.handleModal(false)}>Close</Button>
+                        <Button variant="primary">Submit</Button>
+                    </Modal.Footer>
+                </Modal>
                 <form>
                     <div className="appForm">
                         <h2>Musical Traits</h2>
@@ -85,7 +138,7 @@ class SignupTwo extends Component {
                                maxLength="2"
                                required
                         />
-                        <button onClick={this.nextForm} className="formBtn"><span>Next</span></button>
+                        <button onClick={() => {this.handleModal(true)}} className="formBtn"><span>Next</span></button>
                     </div>
                 </form>
             </Fragment>
@@ -93,4 +146,4 @@ class SignupTwo extends Component {
     }
 }
 
-export default SignupTwo
+export default SignupTwo;

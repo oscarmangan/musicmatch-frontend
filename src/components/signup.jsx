@@ -10,6 +10,12 @@ class Signup extends Component {
         username: "",
         password: "",
         confPassword: "",
+        instruments: [
+
+        ],
+        genres: [
+
+        ],
         band_exp: "",
         age: "",
         town: "",
@@ -38,6 +44,19 @@ class Signup extends Component {
     handleChange = input => e => {
         this.setState({
             [input]: e.target.value
+        });
+    }
+
+    //function to add instruments selected to the state
+    handleInstrumentsAdded = input => {
+        this.setState({
+            instruments: [...this.state.instruments, input]
+        });
+    }
+
+    handleGenresAdded = input => {
+        this.setState({
+            genres: [...this.state.genres, input]
         });
     }
 
@@ -88,6 +107,10 @@ class Signup extends Component {
         }
     }
 
+    register = () => {
+
+    }
+
     render() {
         const {stage} = this.state;
         const {email, username, password, confPassword, band_exp,
@@ -108,7 +131,10 @@ class Signup extends Component {
             return(
                 <SignupTwo
                     nextStage={this.nextStage}
+                    prevStage={this.prevStage}
                     handleChange={this.handleChange}
+                    handleInstrumentAdded={this.handleInstrumentsAdded}
+                    handleGenresAdded={this.handleGenresAdded}
                     handleKeyUp={this.handleKeyUp}
                     musicInfo={musicInfo}
                 />
@@ -116,9 +142,11 @@ class Signup extends Component {
         } else if(stage === 3){
             return(
                 <SignupThree
+                    prevStage={this.prevStage}
                     handleChange={this.handleChange}
                     handleKeyUp={this.handleKeyUp}
                     miscInfo={miscInfo}
+                    register={this.register}
                 />
             )
         }
