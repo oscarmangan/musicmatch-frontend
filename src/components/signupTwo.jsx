@@ -9,17 +9,12 @@ class SignupTwo extends Component {
         genreCount: 0,
         instrCount: 0,
         show: false,
-        instruments: [
-
-        ],
-        genres: [
-
-        ]
+        instruments: [],
+        genres: []
     }
 
-    nextForm = e => {
+    nextForm = () => {
         const {nextStage, addProfileExp} = this.props;
-        //e.preventDefault();
         addProfileExp(this.state.instruments, this.state.genres);
         nextStage();
     }
@@ -29,10 +24,10 @@ class SignupTwo extends Component {
         this.props.prevStage();
     }
 
-    handleModal = display => {
+    handleModal = () => {
         if(this.checkboxValidation()){
             this.setState({
-                show:display
+                show: true
             });
         } else {
             return false;
@@ -104,7 +99,6 @@ class SignupTwo extends Component {
     //get the experience inputs from the modal and create objects in the array
     setExp = (e) => {
         let thisExp = e.target.value;
-
         //create a mutable copy of the instruments array
         //find the index where the name matches the obj name
         let instrArr = [...this.state.instruments]
@@ -146,37 +140,33 @@ class SignupTwo extends Component {
                                         onChange={this.setExp}
                                         type="text"
                                         placeholder="Experience"
-                                        maxLength="2"
-                                    />
+                                        maxLength="2"/>
                                 </div>
                             )
                         })}
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={() => this.handleModal(false)}>Close</Button>
-                        <Button variant="primary" onClick={this.nextForm}>Submit</Button>
+                        <Button variant="primary" onClick={() => this.nextForm()}>Submit</Button>
                     </Modal.Footer>
                 </Modal>
-                <form>
-                    <div className="appForm">
-                        <h2>Musical Traits</h2>
-                        <InstrumentsForm
-                            onInstrumentChange={this.onInstrumentChange}
-                        />
-                        <GenresForm
-                            onGenreChange={this.onGenreChange}
-                        /><br/>
-                        <h4>Band Experience</h4>
-                        <input type="text"
-                               placeholder="Band experience (years)"
-                               onKeyUp={handleKeyUp}
-                               onChange={handleChange('band_exp')}
-                               maxLength="2"
-                               required
-                        />
-                        <button onClick={() => {this.handleModal(true)}} className="formBtn"><span>Next</span></button>
-                    </div>
-                </form>
+                <div className="appForm">
+                    <h2>Musical Traits</h2>
+                    <InstrumentsForm
+                        onInstrumentChange={this.onInstrumentChange}
+                    />
+                    <GenresForm
+                        onGenreChange={this.onGenreChange}
+                    /><br/>
+                    <h4>Band Experience</h4>
+                    <input type="text"
+                           placeholder="Band experience (years)"
+                           onKeyUp={handleKeyUp}
+                           onChange={handleChange('band_exp')}
+                           maxLength="2"
+                    />
+                    <button onClick={this.handleModal} className="formBtn"><span>Next</span></button>
+                </div>
             </Fragment>
         )
     }

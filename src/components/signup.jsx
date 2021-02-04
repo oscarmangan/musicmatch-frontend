@@ -45,6 +45,7 @@ class Signup extends Component {
         this.setState({
             [input]: e.target.value
         });
+        console.log(e.target.value);
     }
 
     //function to add instruments selected to the state

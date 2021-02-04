@@ -21,19 +21,21 @@ class SignupThree extends Component {
                     <div className="appForm">
                         <h2>Profile</h2>
                         <input type="text"
-                               placeholder="Age"
-                               onChange={handleChange('age')}
-                               onKeyUp={handleKeyUp}
-                               defaultValue={miscInfo.age}
+                           placeholder="Age"
+                           onChange={handleChange('age')}
+                           onKeyUp={handleKeyUp}
+                           defaultValue={miscInfo.age}
                         />
                         <input type="text"
-                               placeholder="Town"
-                               onChange={handleChange('town')}
-                               defaultValue={miscInfo.town}
+                           placeholder="Town"
+                           onChange={handleChange('town')}
+                           defaultValue={miscInfo.town}
                         />
                         <textarea
-                                placeholder="Bio"
-                                rows="8"
+                            onChange={handleChange('bio')}
+                            defaultValue={miscInfo.bio}
+                            placeholder="Bio"
+                            rows="8"
                         />
                         <button onClick={this.finishSignup} className="formBtn"><span>Finish</span></button>
                     </div>
