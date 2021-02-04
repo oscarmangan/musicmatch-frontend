@@ -44,7 +44,7 @@ class MenuBar extends Component {
             return (
                 <Fragment>
                     <nav className="navbar navbar-expand-md navbar-dark" style={{backgroundColor: "#009fff"}}>
-                        <NavLink className="navbar-brand" to="/home"><b>musicmatch</b></NavLink>
+                        <NavLink className="navbar-brand" to="/login"><b>musicmatch</b></NavLink>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"/>

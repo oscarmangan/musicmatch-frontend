@@ -48,16 +48,15 @@ class Signup extends Component {
     }
 
     //function to add instruments selected to the state
-    handleInstrumentsAdded = input => {
+    addProfileExp = (_instruments, _genres) => {
+        console.log(_instruments);
+        console.log(_genres);
         this.setState({
-            instruments: [...this.state.instruments, input]
+            instruments: _instruments,
+            genres: _genres
         });
-    }
-
-    handleGenresAdded = input => {
-        this.setState({
-            genres: [...this.state.genres, input]
-        });
+        console.log(this.state.instruments);
+        console.log(this.state.genres);
     }
 
     //function to handle inputs on each key being pressed, mainly for number only fields
@@ -133,8 +132,7 @@ class Signup extends Component {
                     nextStage={this.nextStage}
                     prevStage={this.prevStage}
                     handleChange={this.handleChange}
-                    handleInstrumentAdded={this.handleInstrumentsAdded}
-                    handleGenresAdded={this.handleGenresAdded}
+                    addProfileExp={this.addProfileExp}
                     handleKeyUp={this.handleKeyUp}
                     musicInfo={musicInfo}
                 />

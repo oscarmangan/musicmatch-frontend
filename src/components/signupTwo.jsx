@@ -18,10 +18,10 @@ class SignupTwo extends Component {
     }
 
     nextForm = e => {
-        e.preventDefault();
-        if(this.checkboxValidation()){
-            this.props.nextStage();
-        }
+        const {nextStage, addProfileExp} = this.props;
+        //e.preventDefault();
+        addProfileExp(this.state.instruments, this.state.genres);
+        nextStage();
     }
 
     backForm = e => {
@@ -30,41 +30,60 @@ class SignupTwo extends Component {
     }
 
     handleModal = display => {
-        this.setState({
-            show:display
-        });
-    }
-
-    //function to increment or decrement the number of boxes checked
-    onGenreChange = e => {
-        if(e.target.checked){
-            this.setState((prevState) => ({
-                genreCount: prevState.genreCount + 1
-            }));
-            console.log(this.state.genreCount);
+        if(this.checkboxValidation()){
+            this.setState({
+                show:display
+            });
         } else {
-            this.setState((prevState) => ({
-                genreCount: prevState.genreCount - 1
-            }));
-            console.log(this.state.genreCount);
+            return false;
         }
     }
 
     //function to increment or decrement the number of boxes checked
+    //and add/delete the genre checked/unchecked to the state
+    onGenreChange = e => {
+        if(e.target.checked){
+            this.setState((prevState) => ({
+                genreCount: prevState.genreCount + 1,
+                genres: [...this.state.genres, e.target.value]
+            }));
+        } else {
+            let gen = [...this.state.genres];
+            let index = gen.indexOf(e.target.value);
+            //check the index status and splice it from gen
+            if(index !== -1){
+                gen.splice(index, 1);
+                this.setState((prevState) => ({
+                    genreCount: prevState.genreCount - 1,
+                    genres: gen
+                }));
+            }
+        }
+    }
+
+    //function to increment or decrement the number of boxes checked
+    //and add/delete the instrument checked/unchecked to the state
     onInstrumentChange = e => {
         if(e.target.checked){
             this.setState((prevState) => ({
-                instrCount: prevState.instrCount + 1
+                instrCount: prevState.instrCount + 1,
+                //add the new object to the array
+                instruments: [...this.state.instruments, {
+                    name: e.target.value,
+                    exp: ""
+                }]
             }));
-            this.setState({
-                instruments: [...this.state.instruments, e.target.value]
-            });
-            console.log(this.state.instrCount);
         } else {
-            this.setState((prevState) => ({
-               instrCount: prevState.instrCount - 1
-            }));
-            console.log(this.state.instrCount);
+            let ins = [...this.state.instruments];
+            let index = ins.findIndex(i => i.name === e.target.value);
+            //check the index status and splice it from ins
+            if(index !== -1){
+                ins.splice(index, 1);
+                this.setState((prevState) => ({
+                    instrCount: prevState.instrCount - 1,
+                    instruments: ins
+                }));
+            }
         }
     }
 
@@ -82,18 +101,28 @@ class SignupTwo extends Component {
         }
     }
 
-    getExperience = () => {
+    //get the experience inputs from the modal and create objects in the array
+    setExp = (e) => {
+        let thisExp = e.target.value;
 
+        //create a mutable copy of the instruments array
+        //find the index where the name matches the obj name
+        let instrArr = [...this.state.instruments]
+        let index = instrArr.findIndex(i => i.name === e.target.name.slice(0,-4))
+        instrArr[index] = {
+            name: e.target.name.slice(0, -4),
+            exp: thisExp
+        };
+        //if the index is existent, overwrite the old state with the new array
+        if(index !== -1){
+            this.setState({
+                instruments: instrArr
+            });
+        }
     }
 
     render() {
         const {handleChange, handleKeyUp} = this.props;
-
-        this.componentWillMount = () => {
-            window.onpopstate = e => {
-                this.backForm(e);
-            }
-        }
 
         return (
             <Fragment>
@@ -104,21 +133,28 @@ class SignupTwo extends Component {
                     <Modal.Header closeButton>
                         <Modal.Title>Instrument Experience</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>
+                    <Modal.Body style={{textAlign:"center"}}>
                         <p>Please input your level of experience (in years) for:</p>
                         {this.state.instruments.map(instrument => {
                             return(
-                                <div>
-                                    <h6>{instrument}</h6>
-                                    <input type="number"
-                                    placeholder="XP"/>
+                                <div key={`${instrument.name}-div`} style={{marginBottom:"4%"}}>
+                                    <h6 key={`${instrument.name}-head`} className="expHeading">{instrument.name}</h6>
+                                    <input
+                                        key={`${instrument.name}-key`}
+                                        name={`${instrument.name}-exp`}
+                                        onKeyUp={handleKeyUp}
+                                        onChange={this.setExp}
+                                        type="text"
+                                        placeholder="Experience"
+                                        maxLength="2"
+                                    />
                                 </div>
                             )
                         })}
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={() => this.handleModal(false)}>Close</Button>
-                        <Button variant="primary">Submit</Button>
+                        <Button variant="primary" onClick={this.nextForm}>Submit</Button>
                     </Modal.Footer>
                 </Modal>
                 <form>
