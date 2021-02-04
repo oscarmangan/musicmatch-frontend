@@ -10,16 +10,14 @@ class Signup extends Component {
         username: "",
         password: "",
         confPassword: "",
-        instruments: [
-
-        ],
-        genres: [
-
-        ],
+        instruments: [],
+        genres: [],
         band_exp: "",
         age: "",
         town: "",
-        bio: ""
+        bio: "",
+        images: [],
+        music: []
     }
 
     //function to switch stage to next stage in multi-form signup
@@ -45,7 +43,6 @@ class Signup extends Component {
         this.setState({
             [input]: e.target.value
         });
-        console.log(e.target.value);
     }
 
     //function to add instruments selected to the state
@@ -56,8 +53,6 @@ class Signup extends Component {
             instruments: _instruments,
             genres: _genres
         });
-        console.log(this.state.instruments);
-        console.log(this.state.genres);
     }
 
     //function to handle inputs on each key being pressed, mainly for number only fields
@@ -66,10 +61,18 @@ class Signup extends Component {
         if(!e.target.value.match(reg)){
             alert("Input must be a number!");
             e.target.value = "";
-            this.setState({
-                band_exp: ""
-            });
+
+            //if the input field was for band experience, reset the state
+            if(e.target.name === "band_exp"){
+                this.setState({
+                    band_exp: ""
+                });
+            }
         }
+    }
+
+    resetStateValue = e => {
+
     }
 
     //function to ensure the two passwords match

@@ -13,21 +13,28 @@ class SignupTwo extends Component {
         genres: []
     }
 
+    //proceed to the next stage in the registration process
     nextForm = () => {
         const {nextStage, addProfileExp} = this.props;
-        addProfileExp(this.state.instruments, this.state.genres);
-        nextStage();
+        //ensure user has entered XP levels
+        if(this.checkExp()){
+            addProfileExp(this.state.instruments, this.state.genres);
+            nextStage();
+        }
     }
 
+    //go back to the last stage in the registration process
     backForm = e => {
         e.preventDefault();
         this.props.prevStage();
     }
 
-    handleModal = () => {
+    //if the user has checked at least 1 instrument and 1 genre
+    //display the modal, otherwise keep hidden until validation met
+    handleModal = (display) => {
         if(this.checkboxValidation()){
             this.setState({
-                show: true
+                show: display
             });
         } else {
             return false;
@@ -115,6 +122,19 @@ class SignupTwo extends Component {
         }
     }
 
+    //function to ensure the user has input an experience level
+    //for each instrument they have checked
+    checkExp = () => {
+        let reg = /^[0-9]{1,2}$/;
+        for(let i=0; i < this.state.instruments.length; i++){
+            if(!this.state.instruments[i].exp.match(reg)) {
+                alert("You must enter an experience level for every instrument!");
+                return false;
+            }
+        }
+        return true;
+    }
+
     render() {
         const {handleChange, handleKeyUp} = this.props;
 
@@ -140,7 +160,7 @@ class SignupTwo extends Component {
                                         onChange={this.setExp}
                                         type="text"
                                         placeholder="Experience"
-                                        maxLength="2"/>
+                                        maxLength="2" />
                                 </div>
                             )
                         })}
@@ -160,12 +180,13 @@ class SignupTwo extends Component {
                     /><br/>
                     <h4>Band Experience</h4>
                     <input type="text"
+                           name={"band_exp"}
                            placeholder="Band experience (years)"
                            onKeyUp={handleKeyUp}
                            onChange={handleChange('band_exp')}
                            maxLength="2"
                     />
-                    <button onClick={this.handleModal} className="formBtn"><span>Next</span></button>
+                    <button onClick={() => this.handleModal(true)} className="formBtn"><span>Next</span></button>
                 </div>
             </Fragment>
         )
