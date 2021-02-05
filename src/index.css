@@ -194,3 +194,36 @@ code {
   margin-top: 2%;
 }
 
+.imagePreview {
+  height: 200px;
+  width: auto;
+  background-position: center center;
+}
+
+.inputLabel {
+  margin-top: 5px;
+}
+
+.uploadBtn {
+  padding: 0.6vh;
+  max-width: 132px;
+  margin-top: 0.5vh;
+  margin-bottom: 1vh;
+  width: 90%;
+  background-color: #ffffff;
+  color: gainsboro;
+  border: 1px solid gainsboro;
+  border-radius: 66px;
+  transition-duration: 0.5s;
+}
+
+.uploadBtn:hover {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.uploadIcon {
+  width: 120px;
+  height: auto;
+}
+

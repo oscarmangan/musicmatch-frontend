@@ -17,7 +17,10 @@ class Signup extends Component {
         town: "",
         bio: "",
         images: [],
-        music: []
+        music: [],
+        facebook: "",
+        twitter: "",
+        instagram: ""
     }
 
     //function to switch stage to next stage in multi-form signup
@@ -117,10 +120,11 @@ class Signup extends Component {
     render() {
         const {stage} = this.state;
         const {email, username, password, confPassword, band_exp,
-                age, town, bio} = this.state;
+                age, town, bio, images, music, facebook, twitter,
+            instagram} = this.state;
         const credentials = { email, username, password, confPassword }
         const musicInfo = { band_exp }
-        const miscInfo = { age, town, bio }
+        const miscInfo = { age, town, bio, images, music, facebook, twitter, instagram }
 
         if(stage === 1){
             return(
