@@ -11,7 +11,6 @@ import Homepage from "./components/homepage";
 import Discover from "./components/discover";
 import Profile from "./components/profile";
 import Search from "./components/search";
-import SignupTwo from "./components/signupTwo";
 
 class App extends Component {
     constructor(props) {

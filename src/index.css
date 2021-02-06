@@ -204,6 +204,33 @@ code {
   margin-top: 5px;
 }
 
+.imageUploadDiv {
+  display: flex;
+  margin: 2% auto;
+  width: 80%;
+}
+
+.uploadContainer {
+  position: relative;
+  height: 136px;
+  width: 146px;
+  margin: 0 auto;
+}
+
+.deleteIcon {
+  width: 30px;
+  height: auto;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  transition-duration: 0.5s;
+}
+
+.deleteIcon:hover {
+  transition-duration: 0.5s;
+  top: 15px;
+}
+
 .uploadBtn {
   padding: 0.6vh;
   max-width: 132px;
@@ -227,3 +254,9 @@ code {
   height: auto;
 }
 
+.uploadedImg {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+}

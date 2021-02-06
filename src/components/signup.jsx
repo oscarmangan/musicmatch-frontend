@@ -50,8 +50,7 @@ class Signup extends Component {
 
     //function to add instruments selected to the state
     addProfileExp = (_instruments, _genres) => {
-        console.log(_instruments);
-        console.log(_genres);
+
         this.setState({
             instruments: _instruments,
             genres: _genres
@@ -72,10 +71,6 @@ class Signup extends Component {
                 });
             }
         }
-    }
-
-    resetStateValue = e => {
-
     }
 
     //function to ensure the two passwords match

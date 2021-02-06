@@ -1,10 +1,11 @@
 import React, {Component, Fragment} from "react";
 import mmIcon from '../static/mm_icon_gradient.png';
 import uploadIcon from '../static/upload.png';
+import delIcon from '../static/delete.png';
 
 class SignupThree extends Component {
     state = {
-        images: [],
+        images: ['../static/upload.png', '../static/upload.png', {uploadIcon}],
         isUploaded: [false, false, false]
     }
 
@@ -13,30 +14,49 @@ class SignupThree extends Component {
         this.props.register();
     }
 
-    handleImageUpload = (e) => (id) => {
+    //function to change the upload icon for each image uploaded as a preview of the
+    //image that was uploaded by the user
+    handleImageUpload = (e, id) => {
 
-        if(e.target.files && e.target.files[id]){
+        let index = id;
+        if(e.target.files && e.target.files[0]){
+
             let reader = new FileReader();
 
             //get the initial state and change the image to the uploaded one
-            reader.onload = () => {
+            reader.onloadend = (e) => {
 
                 //change the state index for the image uploaded
                 let uploadBooleans = this.state.isUploaded;
                 let uploadImages = this.state.images;
-                uploadBooleans[id] = true;
-                uploadImages[id] = e.target.result;
+
+                uploadBooleans[index] = true;
+                uploadImages[index] = e.target.result;
 
                 this.setState({
                     images: uploadImages,
                     isUploaded: uploadBooleans
                 });
-                console.log(this.state.images);
-            }
 
-            reader.readAsDataURL(e.target.files[id]);
+            }
+            reader.readAsDataURL(e.target.files[0]);
         }
 
+    }
+
+    //function to remove an image uploaded
+    removeUpload = (e, id) => {
+        let index = id;
+        let removeBooleans = this.state.isUploaded;
+        let removeImages = this.state.images;
+
+        removeBooleans[index] = false;
+        removeImages[index] = null;
+
+        this.setState({
+            images: removeImages,
+            isUploaded: removeBooleans
+        });
     }
 
     render() {
@@ -50,45 +70,89 @@ class SignupThree extends Component {
                     <div className="appForm">
                         <h2>Profile</h2>
                         <h6>Upload Images (maximum 3)</h6>
-                        {this.state.isUploaded[0] ? (
-                            <label htmlFor="imageInputOne" className="uploadBtn">
-                                <img className="uploadIcon" alt="Upload icon" src={this.state.images[0]}/>
-                            </label>
-                        ) : (
-                            <label htmlFor="imageInputOne" className="uploadBtn">
-                                <img className="uploadIcon" alt="Upload icon" src={uploadIcon}/>
-                            </label>
-                        )}
-                        <input
-                            id="imageInputOne"
-                            type="file"
-                            multiple={true}
-                            accept=".jpg,.jpeg,.png"
-                            onChange={(e) => this.handleImageUpload(e, 0)}
-                            style={{display: "none"}}
-                        />
-                        <label htmlFor="imageInputTwo" className="uploadBtn">
-                            <img className="uploadIcon" alt="Upload icon" src={uploadIcon}/>
-                        </label>
-                        <input
-                            id="imageInputTwo"
-                            type="file"
-                            multiple={true}
-                            accept=".jpg,.jpeg,.png"
-                            onChange={(e) => this.handleImageUpload(e, 1)}
-                            style={{display: "none"}}
-                        />
-                        <label htmlFor="imageInputThree" className="uploadBtn">
-                            <img className="uploadIcon" alt="Upload icon" src={uploadIcon}/>
-                        </label>
-                        <input
-                            id="imageInputThree"
-                            type="file"
-                            multiple={true}
-                            accept=".jpg,.jpeg,.png"
-                            onChange={(e) => this.handleImageUpload(e, 2)}
-                            style={{display: "none"}}
-                        />
+                        <div className="imageUploadDiv">
+                            {this.state.isUploaded[0] ? (
+                                <div className="uploadContainer">
+                                    <img
+                                        className="deleteIcon"
+                                        onClick={(e) => {this.removeUpload(e, 0)}}
+                                        alt="Delete Icon"
+                                        src={delIcon}
+                                    />
+                                    <label htmlFor="imageInputOne" className="uploadBtn">
+                                        <img className="uploadedImg" alt="Upload icon" src={this.state.images[0]}/>
+                                    </label>
+                                </div>
+                            ) : (
+                                <div className="uploadContainer">
+                                    <label htmlFor="imageInputOne" className="uploadBtn">
+                                        <img className="uploadIcon" alt="Upload icon" src={uploadIcon}/>
+                                    </label>
+                                </div>
+                            )}
+                            <input
+                                id="imageInputOne"
+                                type="file"
+                                multiple={true}
+                                accept=".jpg,.jpeg,.png"
+                                onChange={(e) => {this.handleImageUpload(e, 0)}}
+                                style={{display: "none"}}
+                            />
+                            {this.state.isUploaded[1] ? (
+                                <div className="uploadContainer">
+                                    <img
+                                        className="deleteIcon"
+                                        onClick={(e) => {this.removeUpload(e, 1)}}
+                                        alt="Delete Icon"
+                                        src={delIcon}
+                                    />
+                                    <label htmlFor="imageInputTwo" className="uploadBtn">
+                                        <img className="uploadedImg" alt="Upload icon" src={this.state.images[1]}/>
+                                    </label>
+                                </div>
+                            ) : (
+                                <div className="uploadContainer">
+                                    <label htmlFor="imageInputTwo" className="uploadBtn">
+                                        <img className="uploadIcon" alt="Upload icon" src={uploadIcon}/>
+                                    </label>
+                                </div>
+                            )}
+                            <input
+                                id="imageInputTwo"
+                                type="file"
+                                multiple={true}
+                                accept=".jpg,.jpeg,.png"
+                                onChange={(e) => {this.handleImageUpload(e, 1)}}
+                                style={{display: "none"}}
+                            />
+                            {this.state.isUploaded[2] ? (
+                                <div className="uploadContainer">
+                                    <img
+                                        className="deleteIcon"
+                                        onClick={(e) => {this.removeUpload(e, 2)}}
+                                        alt="Delete Icon"
+                                        src={delIcon}
+                                    />
+                                    <label htmlFor="imageInputThree" className="uploadBtn">
+                                        <img className="uploadedImg" alt="Upload icon" src={this.state.images[2]}/>
+                                    </label>
+                                </div>
+                            ) : (
+                                <div className="uploadContainer">
+                                    <label htmlFor="imageInputThree" className="uploadBtn">
+                                        <img className="uploadIcon" alt="Upload icon" src={uploadIcon}/>
+                                    </label>
+                                </div>
+                            )}
+                            <input
+                                id="imageInputThree"
+                                type="file"
+                                multiple={true}
+                                accept=".jpg,.jpeg,.png"
+                                onChange={(e) => {this.handleImageUpload(e, 2)}}
+                                style={{display: "none"}}
+                            />
+                        </div>
                         <input
                             placeholder="Facebook URL"
                             defaultValue={miscInfo.facebook}
