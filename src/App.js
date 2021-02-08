@@ -74,6 +74,46 @@ class App extends Component {
     }
 
     /*
+    Registration/signup functionality to create a new user from the multi-step form
+     */
+    registerUser = (e, signupState) => {
+        e.preventDefault();
+
+        //for this optional field, if no value was entered, set to 0
+        if(signupState.band_exp === ""){
+            signupState.band_exp = 0;
+        }
+        console.log(signupState);
+        //first fetch we create the user itself before proceeding
+        fetch(this.state.HOST + 'api/users/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: signupState.username,
+                email: signupState.email,
+                password: signupState.password,
+                profile: {
+                    band_exp: signupState.band_exp,
+                    age: signupState.age,
+                    town: signupState.town,
+                    bio: signupState.bio,
+                    facebook_url: signupState.facebook_url,
+                    twitter_url: signupState.twitter_url,
+                    instagram_url: signupState.instagram_url,
+                    lat_long: signupState.lat_long
+                }
+            })
+        }).then(response => {
+            console.log(response.json());
+        }).catch((error) => {
+            alert(error);
+            throw error;
+        })
+    }
+
+    /*
     Render() where components are displayed along with routing SPA functionality
      */
     render() {
@@ -106,7 +146,9 @@ class App extends Component {
                                 />
                             </Route>
                             <Route path='/signup'>
-                                <Signup/>
+                                <Signup
+                                    registerUser={this.registerUser}
+                                />
                             </Route>
                         </Switch>
                     </div>

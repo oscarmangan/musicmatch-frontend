@@ -17,20 +17,21 @@ class Signup extends Component {
         town: "",
         bio: "",
         images: [],
-        music: [],
-        facebook: "",
-        twitter: "",
-        instagram: ""
+        //music: [],
+        facebook_url: "",
+        twitter_url: "",
+        instagram_url: "",
+        lat_long: ""
     }
 
     //function to switch stage to next stage in multi-form signup
     nextStage = () => {
-        //if(this.checkPasswords() && this.checkInputs()){
+        if(this.checkPasswords() && this.checkInputs()){
             const {stage} = this.state;
             this.setState({
                 stage: stage + 1
             })
-        //}
+        }
     }
 
     //function to switch stage to the previous stage in multi-form signup
@@ -84,11 +85,25 @@ class Signup extends Component {
         }
     }
 
+    //get the users location via navigator (asked for in SignupTwo)
+    getLocation = () => {
+        navigator.geolocation.getCurrentPosition((pos) =>{
+            let locString = pos.coords.latitude + "," + pos.coords.longitude;
+            this.setState({
+                lat_long: locString
+            });
+        })
+    }
+
     //function to check all input fields have been filled in
     checkInputs = () => {
         const {email, username, password, confPassword, band_exp} = this.state;
-        if(email === ""){
+        let emailValidity = /^[A-Za-z0-9.]+@[A-Za-z0-9]+\.[A-Za-z]+$/;
+        if(email === "") {
             alert("Email is empty!");
+            return false;
+        } else if (!email.match(emailValidity)){
+            alert("Email is invalid!");
             return false;
         } else if (username === ""){
             alert("Username is empty!");
@@ -108,18 +123,15 @@ class Signup extends Component {
         }
     }
 
-    register = () => {
-
-    }
-
     render() {
         const {stage} = this.state;
         const {email, username, password, confPassword, band_exp,
-                age, town, bio, images, music, facebook, twitter,
-            instagram} = this.state;
+                age, town, bio, images, music, facebook_url, twitter_url,
+                instagram_url} = this.state;
         const credentials = { email, username, password, confPassword }
         const musicInfo = { band_exp }
-        const miscInfo = { age, town, bio, images, music, facebook, twitter, instagram }
+        const miscInfo = { age, town, bio, images, music, facebook_url, twitter_url, instagram_url }
+        const {registerUser} = this.props;
 
         if(stage === 1){
             return(
@@ -134,6 +146,7 @@ class Signup extends Component {
                 <SignupTwo
                     nextStage={this.nextStage}
                     prevStage={this.prevStage}
+                    getLocation={this.getLocation}
                     handleChange={this.handleChange}
                     addProfileExp={this.addProfileExp}
                     handleKeyUp={this.handleKeyUp}
@@ -147,7 +160,7 @@ class Signup extends Component {
                     handleChange={this.handleChange}
                     handleKeyUp={this.handleKeyUp}
                     miscInfo={miscInfo}
-                    register={this.register}
+                    finishSignup={(e) => registerUser(e, this.state)}
                 />
             )
         }

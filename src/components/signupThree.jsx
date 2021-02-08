@@ -5,13 +5,14 @@ import delIcon from '../static/delete.png';
 
 class SignupThree extends Component {
     state = {
-        images: ['../static/upload.png', '../static/upload.png', {uploadIcon}],
+        images: [],
         isUploaded: [false, false, false]
     }
 
     finishSignup = e => {
         e.preventDefault();
-        this.props.register();
+        const {finishSignup} = this.props;
+        finishSignup(e);
     }
 
     //function to change the upload icon for each image uploaded as a preview of the
@@ -60,7 +61,7 @@ class SignupThree extends Component {
     }
 
     render() {
-        const {miscInfo, handleChange, handleKeyUp} = this.props;
+        const {miscInfo, handleChange, handleKeyUp, finishSignup} = this.props;
 
         return(
             <Fragment>
@@ -93,7 +94,7 @@ class SignupThree extends Component {
                             <input
                                 id="imageInputOne"
                                 type="file"
-                                multiple={true}
+                                multiple={false}
                                 accept=".jpg,.jpeg,.png"
                                 onChange={(e) => {this.handleImageUpload(e, 0)}}
                                 style={{display: "none"}}
@@ -120,7 +121,7 @@ class SignupThree extends Component {
                             <input
                                 id="imageInputTwo"
                                 type="file"
-                                multiple={true}
+                                multiple={false}
                                 accept=".jpg,.jpeg,.png"
                                 onChange={(e) => {this.handleImageUpload(e, 1)}}
                                 style={{display: "none"}}
@@ -147,26 +148,29 @@ class SignupThree extends Component {
                             <input
                                 id="imageInputThree"
                                 type="file"
-                                multiple={true}
+                                multiple={false}
                                 accept=".jpg,.jpeg,.png"
                                 onChange={(e) => {this.handleImageUpload(e, 2)}}
                                 style={{display: "none"}}
                             />
                         </div>
                         <input
+                            type="text"
                             placeholder="Facebook URL"
-                            defaultValue={miscInfo.facebook}
-                            onChange={handleChange('facebook')}
+                            defaultValue={miscInfo.facebook_url}
+                            onChange={handleChange('facebook_url')}
                         />
                         <input
+                            type="text"
                             placeholder="Twitter URL"
-                            defaultValue={miscInfo.twitter}
-                            onChange={handleChange('twitter')}
+                            defaultValue={miscInfo.twitter_url}
+                            onChange={handleChange('twitter_url')}
                         />
                         <input
+                            type="text"
                             placeholder="Instagram URL"
-                            defaultValue={miscInfo.instagram}
-                            onChange={handleChange('instagram')}
+                            defaultValue={miscInfo.instagram_url}
+                            onChange={handleChange('instagram_url')}
                         />
                         <input type="text"
                            placeholder="Age"
@@ -185,7 +189,7 @@ class SignupThree extends Component {
                             placeholder="Bio"
                             rows="8"
                         />
-                        <button onClick={this.finishSignup} className="formBtn"><span>Finish</span></button>
+                        <button onClick={finishSignup} className="formBtn"><span>Finish</span></button>
                     </div>
             </Fragment>
         )

@@ -10,7 +10,13 @@ class SignupTwo extends Component {
         instrCount: 0,
         show: false,
         instruments: [],
-        genres: []
+        genres: [],
+    }
+
+    //upon component mounting, get the users location and store it
+    componentDidMount() {
+        const {getLocation} = this.props;
+        getLocation();
     }
 
     //proceed to the next stage in the registration process

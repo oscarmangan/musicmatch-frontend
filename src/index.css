@@ -228,25 +228,26 @@ code {
 
 .deleteIcon:hover {
   transition-duration: 0.5s;
-  top: 15px;
+  top: 13px;
 }
 
 .uploadBtn {
   padding: 0.6vh;
-  max-width: 132px;
+  max-width: 134px;
   margin-top: 0.5vh;
   margin-bottom: 1vh;
-  width: 90%;
+  width: 100%;
   background-color: #ffffff;
   color: gainsboro;
   border: 1px solid gainsboro;
   border-radius: 66px;
-  transition-duration: 0.5s;
+  transition-duration: 0.3s;
 }
 
 .uploadBtn:hover {
   background-color: dodgerblue;
   color: white;
+  border: 1px solid #009fff;
 }
 
 .uploadIcon {
