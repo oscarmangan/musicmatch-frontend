@@ -2,6 +2,7 @@ import React, {Component, Fragment} from "react";
 import mmIcon from '../static/mm_icon_gradient.png';
 import uploadIcon from '../static/upload.png';
 import delIcon from '../static/delete.png';
+import SignupComplete from "./signupComplete";
 
 class SignupThree extends Component {
     state = {
@@ -191,6 +192,7 @@ class SignupThree extends Component {
                         />
                         <button onClick={finishSignup} className="formBtn"><span>Finish</span></button>
                     </div>
+                <SignupComplete/>
             </Fragment>
         )
     }

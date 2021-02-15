@@ -255,6 +255,17 @@ code {
   height: auto;
 }
 
+.okIcon {
+  width: 200px;
+  height: auto;
+  margin-bottom: 3%;
+}
+
+.completeDiv {
+  margin: 0 auto;
+  text-align: center;
+}
+
 .uploadedImg {
   width: 120px;
   height: 120px;

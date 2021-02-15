@@ -103,7 +103,10 @@ class App extends Component {
                     twitter_url: signupState.twitter_url,
                     instagram_url: signupState.instagram_url,
                     lat_long: signupState.lat_long
-                }
+                },
+                genres: signupState.genres,
+                instruments: signupState.instruments,
+                images: signupState.images
             })
         }).then(response => {
             console.log(response.json());
