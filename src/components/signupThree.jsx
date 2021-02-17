@@ -7,13 +7,18 @@ import SignupComplete from "./signupComplete";
 class SignupThree extends Component {
     state = {
         images: [],
+        loc_limit: 50,
         isUploaded: [false, false, false]
     }
 
     finishSignup = e => {
         e.preventDefault();
-        const {finishSignup} = this.props;
-        finishSignup(e);
+        if(this.checkLimit()) {
+            const {finishSignup} = this.props;
+            finishSignup(e);
+        } else {
+            return false;
+        }
     }
 
     //function to change the upload icon for each image uploaded as a preview of the
@@ -44,6 +49,16 @@ class SignupThree extends Component {
             reader.readAsDataURL(e.target.files[0]);
         }
 
+    }
+
+    //function to handle the changes made on the range limit field
+    handleLimit = (e) => {
+        const {handleChange} = this.props;
+        let limit_val = e.target.value;
+        this.setState({
+            loc_limit: limit_val
+        })
+        handleChange('loc_limit');
     }
 
     //function to remove an image uploaded
@@ -157,6 +172,12 @@ class SignupThree extends Component {
                         </div>
                         <input
                             type="text"
+                            placeholder="Music URL"
+                            defaultValue={miscInfo.music_url}
+                            onChange={handleChange('music_url')}
+                        />
+                        <input
+                            type="text"
                             placeholder="Facebook URL"
                             defaultValue={miscInfo.facebook_url}
                             onChange={handleChange('facebook_url')}
@@ -189,6 +210,20 @@ class SignupThree extends Component {
                             defaultValue={miscInfo.bio}
                             placeholder="Bio"
                             rows="8"
+                        /><br/>
+                        <label htmlFor="distance">Distance Limit (km)</label><br/>
+                        <input type="text"
+                               id="rangeValue"
+                               disabled={true}
+                               placeholder={miscInfo.loc_limit + " kilometres"}
+                               className="limitValueBox"
+                        />
+                        <input type="range"
+                            id="distance"
+                            min="1"
+                            max="100"
+                            step="1"
+                            onChange={handleChange('loc_limit')}
                         />
                         <button onClick={finishSignup} className="formBtn"><span>Finish</span></button>
                     </div>

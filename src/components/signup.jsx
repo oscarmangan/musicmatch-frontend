@@ -17,11 +17,12 @@ class Signup extends Component {
         town: "",
         bio: "",
         images: [],
-        //music: [],
+        music_url: "",
         facebook_url: "",
         twitter_url: "",
         instagram_url: "",
-        lat_long: ""
+        lat_long: "",
+        loc_limit: 50
     }
 
     //function to switch stage to next stage in multi-form signup
@@ -114,7 +115,7 @@ class Signup extends Component {
         } else if (confPassword === ""){
             alert("Password confirmation is empty!");
             return false;
-        } else if (band_exp === ""){
+        } else if (band_exp === "") {
             this.setState({
                 band_exp: 0
             });
@@ -126,11 +127,11 @@ class Signup extends Component {
     render() {
         const {stage} = this.state;
         const {email, username, password, confPassword, band_exp,
-                age, town, bio, images, music, facebook_url, twitter_url,
-                instagram_url} = this.state;
+                age, town, bio, images, music_url, facebook_url, twitter_url,
+                instagram_url, loc_limit} = this.state;
         const credentials = { email, username, password, confPassword }
         const musicInfo = { band_exp }
-        const miscInfo = { age, town, bio, images, music, facebook_url, twitter_url, instagram_url }
+        const miscInfo = { age, town, bio, images, music_url, facebook_url, twitter_url, instagram_url, loc_limit }
         const {registerUser} = this.props;
 
         if(stage === 1){

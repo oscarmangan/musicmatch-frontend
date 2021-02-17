@@ -53,11 +53,11 @@ class SignupTwo extends Component {
         if(e.target.checked){
             this.setState((prevState) => ({
                 genreCount: prevState.genreCount + 1,
-                genres: [...this.state.genres, e.target.value]
+                genres: [...this.state.genres, {"genre_id": e.target.value}]
             }));
         } else {
             let gen = [...this.state.genres];
-            let index = gen.indexOf(e.target.value);
+            let index = gen.findIndex(i => i.genre_id === e.target.value);
             //check the index status and splice it from gen
             if(index !== -1){
                 gen.splice(index, 1);
@@ -77,13 +77,14 @@ class SignupTwo extends Component {
                 instrCount: prevState.instrCount + 1,
                 //add the new object to the array
                 instruments: [...this.state.instruments, {
-                    name: e.target.value,
-                    exp: ""
+                    instrument_id: e.target.value,
+                    name: e.target.name,
+                    experience_level: ""
                 }]
             }));
         } else {
             let ins = [...this.state.instruments];
-            let index = ins.findIndex(i => i.name === e.target.value);
+            let index = ins.findIndex(i => i.instrument_id === e.target.value);
             //check the index status and splice it from ins
             if(index !== -1){
                 ins.splice(index, 1);
@@ -115,10 +116,12 @@ class SignupTwo extends Component {
         //create a mutable copy of the instruments array
         //find the index where the name matches the obj name
         let instrArr = [...this.state.instruments]
+        console.log(thisExp);
         let index = instrArr.findIndex(i => i.name === e.target.name.slice(0,-4))
         instrArr[index] = {
+            instrument_id: e.target.id,
             name: e.target.name.slice(0, -4),
-            exp: thisExp
+            experience_level: thisExp
         };
         //if the index is existent, overwrite the old state with the new array
         if(index !== -1){
@@ -131,9 +134,10 @@ class SignupTwo extends Component {
     //function to ensure the user has input an experience level
     //for each instrument they have checked
     checkExp = () => {
+        console.log(this.state);
         let reg = /^[0-9]{1,2}$/;
         for(let i=0; i < this.state.instruments.length; i++){
-            if(!this.state.instruments[i].exp.match(reg)) {
+            if(!this.state.instruments[i].experience_level.match(reg)) {
                 alert("You must enter an experience level for every instrument!");
                 return false;
             }
@@ -162,6 +166,7 @@ class SignupTwo extends Component {
                                     <input
                                         key={`${instrument.name}-key`}
                                         name={`${instrument.name}-exp`}
+                                        id={`${instrument.instrument_id}`}
                                         onKeyUp={handleKeyUp}
                                         onChange={this.setExp}
                                         type="text"

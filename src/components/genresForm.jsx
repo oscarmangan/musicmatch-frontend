@@ -18,85 +18,85 @@ class GenresForm extends Component {
                     <div className="row">
                         <div className="col-sm">
                             <label className="preferenceBtn">
-                                <input value="Alternative" type="checkbox" onChange={onGenreChange} autoComplete="off"/>Alternative
+                                <input value={15} type="checkbox" onChange={onGenreChange} autoComplete="off"/>Alternative
                             </label>
                         </div>
                         <div className="col-sm">
                             <label className="preferenceBtn">
-                                <input value="Blues" type="checkbox" onChange={onGenreChange} autoComplete="off"/>Blues
+                                <input value={14} type="checkbox" onChange={onGenreChange} autoComplete="off"/>Blues
                             </label>
                         </div>
                         <div className="col-sm">
                             <label className="preferenceBtn">
-                                <input value="Classical" type="checkbox" onChange={onGenreChange} autoComplete="off"/>Classical
-                            </label>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm">
-                            <label className="preferenceBtn">
-                                <input value="Country" type="checkbox" onChange={onGenreChange} autoComplete="off"/>Country
-                            </label>
-                        </div>
-                        <div className="col-sm">
-                            <label className="preferenceBtn">
-                                <input value="Disco" type="checkbox" onChange={onGenreChange} autoComplete="off"/>Disco
-                            </label>
-                        </div>
-                        <div className="col-sm">
-                            <label className="preferenceBtn">
-                                <input value="Electronic" type="checkbox" onChange={onGenreChange} autoComplete="off"/>Electronic
+                                <input value={13} type="checkbox" onChange={onGenreChange} autoComplete="off"/>Classical
                             </label>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-sm">
                             <label className="preferenceBtn">
-                                <input value="Hip-Hop" type="checkbox" onChange={onGenreChange} autoComplete="off"/>Hip-Hop
+                                <input value={12} type="checkbox" onChange={onGenreChange} autoComplete="off"/>Country
                             </label>
                         </div>
                         <div className="col-sm">
                             <label className="preferenceBtn">
-                                <input value="Indie" type="checkbox" onChange={onGenreChange} autoComplete="off"/>Indie
+                                <input value={11} type="checkbox" onChange={onGenreChange} autoComplete="off"/>Disco
                             </label>
                         </div>
                         <div className="col-sm">
                             <label className="preferenceBtn">
-                                <input value="Jazz" type="checkbox" onChange={onGenreChange} autoComplete="off"/>Jazz
-                            </label>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm">
-                            <label className="preferenceBtn">
-                                <input value="Metal" type="checkbox" onChange={onGenreChange} autoComplete="off"/>Metal
-                            </label>
-                        </div>
-                        <div className="col-sm">
-                            <label className="preferenceBtn">
-                                <input value="Pop" type="checkbox" onChange={onGenreChange} autoComplete="off"/>Pop
-                            </label>
-                        </div>
-                        <div className="col-sm">
-                            <label className="preferenceBtn">
-                                <input value="R&B" type="checkbox" onChange={onGenreChange} autoComplete="off"/>R&B
+                                <input value={10} type="checkbox" onChange={onGenreChange} autoComplete="off"/>Electronic
                             </label>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-sm">
                             <label className="preferenceBtn">
-                                <input value="Reggae" type="checkbox" onChange={onGenreChange} autoComplete="off"/>Reggae
+                                <input value={9} type="checkbox" onChange={onGenreChange} autoComplete="off"/>Hip-Hop
                             </label>
                         </div>
                         <div className="col-sm">
                             <label className="preferenceBtn">
-                                <input value="Rock" type="checkbox" onChange={onGenreChange} autoComplete="off"/>Rock
+                                <input value={8} type="checkbox" onChange={onGenreChange} autoComplete="off"/>Indie
                             </label>
                         </div>
                         <div className="col-sm">
                             <label className="preferenceBtn">
-                                <input value="Traditional" type="checkbox" onChange={onGenreChange} autoComplete="off"/>Traditional
+                                <input value={7} type="checkbox" onChange={onGenreChange} autoComplete="off"/>Jazz
+                            </label>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-sm">
+                            <label className="preferenceBtn">
+                                <input value={6} type="checkbox" onChange={onGenreChange} autoComplete="off"/>Metal
+                            </label>
+                        </div>
+                        <div className="col-sm">
+                            <label className="preferenceBtn">
+                                <input value={5} type="checkbox" onChange={onGenreChange} autoComplete="off"/>Pop
+                            </label>
+                        </div>
+                        <div className="col-sm">
+                            <label className="preferenceBtn">
+                                <input value={4} type="checkbox" onChange={onGenreChange} autoComplete="off"/>R&B
+                            </label>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-sm">
+                            <label className="preferenceBtn">
+                                <input value={3} type="checkbox" onChange={onGenreChange} autoComplete="off"/>Reggae
+                            </label>
+                        </div>
+                        <div className="col-sm">
+                            <label className="preferenceBtn">
+                                <input value={2} type="checkbox" onChange={onGenreChange} autoComplete="off"/>Rock
+                            </label>
+                        </div>
+                        <div className="col-sm">
+                            <label className="preferenceBtn">
+                                <input value={1} type="checkbox" onChange={onGenreChange} autoComplete="off"/>Traditional
                             </label>
                         </div>
                     </div>

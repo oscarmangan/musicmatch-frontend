@@ -83,6 +83,7 @@ class App extends Component {
         if(signupState.band_exp === ""){
             signupState.band_exp = 0;
         }
+
         console.log(signupState);
         //first fetch we create the user itself before proceeding
         fetch(this.state.HOST + 'api/users/', {
@@ -99,12 +100,16 @@ class App extends Component {
                     age: signupState.age,
                     town: signupState.town,
                     bio: signupState.bio,
+                    music_url: signupState.music_url,
                     facebook_url: signupState.facebook_url,
                     twitter_url: signupState.twitter_url,
                     instagram_url: signupState.instagram_url,
-                    lat_long: signupState.lat_long
+                    lat_long: signupState.lat_long,
+                    loc_limit: signupState.loc_limit
                 },
-                genres: signupState.genres,
+                genres: {
+                    list: signupState.genres,
+                },
                 instruments: signupState.instruments,
                 images: signupState.images
             })
