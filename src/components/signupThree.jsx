@@ -68,7 +68,7 @@ class SignupThree extends Component {
         let removeImages = this.state.images;
 
         removeBooleans[index] = false;
-        removeImages[index] = null;
+        removeImages[index] = "";
 
         this.setState({
             images: removeImages,

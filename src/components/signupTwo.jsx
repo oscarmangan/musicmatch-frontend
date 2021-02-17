@@ -53,11 +53,11 @@ class SignupTwo extends Component {
         if(e.target.checked){
             this.setState((prevState) => ({
                 genreCount: prevState.genreCount + 1,
-                genres: [...this.state.genres, {"genre_id": e.target.value}]
+                genres: [...this.state.genres, {"genre": e.target.value}]
             }));
         } else {
             let gen = [...this.state.genres];
-            let index = gen.findIndex(i => i.genre_id === e.target.value);
+            let index = gen.findIndex(i => i.genre === e.target.value);
             //check the index status and splice it from gen
             if(index !== -1){
                 gen.splice(index, 1);
@@ -77,14 +77,14 @@ class SignupTwo extends Component {
                 instrCount: prevState.instrCount + 1,
                 //add the new object to the array
                 instruments: [...this.state.instruments, {
-                    instrument_id: e.target.value,
+                    instrument: e.target.value,
                     name: e.target.name,
                     experience_level: ""
                 }]
             }));
         } else {
             let ins = [...this.state.instruments];
-            let index = ins.findIndex(i => i.instrument_id === e.target.value);
+            let index = ins.findIndex(i => i.instrument === e.target.value);
             //check the index status and splice it from ins
             if(index !== -1){
                 ins.splice(index, 1);
@@ -119,7 +119,7 @@ class SignupTwo extends Component {
         console.log(thisExp);
         let index = instrArr.findIndex(i => i.name === e.target.name.slice(0,-4))
         instrArr[index] = {
-            instrument_id: e.target.id,
+            instrument: e.target.id,
             name: e.target.name.slice(0, -4),
             experience_level: thisExp
         };
@@ -166,7 +166,7 @@ class SignupTwo extends Component {
                                     <input
                                         key={`${instrument.name}-key`}
                                         name={`${instrument.name}-exp`}
-                                        id={`${instrument.instrument_id}`}
+                                        id={`${instrument.instrument}`}
                                         onKeyUp={handleKeyUp}
                                         onChange={this.setExp}
                                         type="text"
