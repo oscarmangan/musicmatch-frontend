@@ -11,6 +11,7 @@ import Homepage from "./components/homepage";
 import Discover from "./components/discover";
 import Profile from "./components/profile";
 import Search from "./components/search";
+import SignupComplete from "./components/signupComplete";
 
 class App extends Component {
     constructor(props) {
@@ -46,10 +47,12 @@ class App extends Component {
                 password: password
             })
         }).then(response => {
-            if(!response.ok){
-                throw Error(response.statusText);
-            } else {
+            if (response.status === 200) {
                 return response.json();
+            } else if(response.status === 400) {
+                throw response;
+            } else if(!response.ok){
+                return false;
             }
         }).then(json => {
             localStorage.setItem('token', json.token);
@@ -57,7 +60,7 @@ class App extends Component {
                 isAuthorised: true
             });
         }).catch((error) => {
-            alert(error);
+            console.log(error);
             throw error;
         })
     };
@@ -73,53 +76,6 @@ class App extends Component {
         })
     }
 
-    /*
-    Registration/signup functionality to create a new user from the multi-step form
-     */
-    registerUser = (e, signupState) => {
-        e.preventDefault();
-
-        //for this optional field, if no value was entered, set to 0
-        if(signupState.band_exp === ""){
-            signupState.band_exp = 0;
-        }
-
-        console.log(signupState);
-        //first fetch we create the user itself before proceeding
-        fetch(this.state.HOST + 'api/users/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                username: signupState.username,
-                email: signupState.email,
-                password: signupState.password,
-                profile: {
-                    band_exp: signupState.band_exp,
-                    age: signupState.age,
-                    town: signupState.town,
-                    bio: signupState.bio,
-                    music_url: signupState.music_url,
-                    facebook_url: signupState.facebook_url,
-                    twitter_url: signupState.twitter_url,
-                    instagram_url: signupState.instagram_url,
-                    lat_long: signupState.lat_long,
-                    loc_limit: signupState.loc_limit
-                },
-                genres: {
-                    list: signupState.genres,
-                },
-                instruments: signupState.instruments,
-                images: signupState.images
-            })
-        }).then(response => {
-            console.log(response.json());
-        }).catch((error) => {
-            alert(error);
-            throw error;
-        })
-    }
 
     /*
     Render() where components are displayed along with routing SPA functionality
@@ -134,7 +90,9 @@ class App extends Component {
                     <div className="pageContent">
                         <Switch>
                             <Route path='/home'>
-                                <Homepage />
+                                <Homepage
+                                    isAuth={this.state.isAuthorised}
+                                />
                             </Route>
                             <Route path='/discover'>
                                 <Discover />
@@ -151,12 +109,16 @@ class App extends Component {
                             <Route path='/login'>
                                 <LoginForm
                                     onClick={this.login}
+                                    isAuth={this.state.isAuthorised}
                                 />
                             </Route>
                             <Route path='/signup'>
                                 <Signup
-                                    registerUser={this.registerUser}
+                                    isAuth={this.state.isAuthorised}
                                 />
+                            </Route>
+                            <Route path='/signup/complete'>
+                                <SignupComplete />
                             </Route>
                         </Switch>
                     </div>

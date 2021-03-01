@@ -108,8 +108,26 @@ code {
   transition-duration: 0.5s;
 }
 
+.backBtn {
+  padding: 0.6vh;
+  max-width: 300px;
+  margin-top: 0;
+  margin-bottom: 1vh;
+  width: 90%;
+  background-color: #ffffff;
+  color: #ff7570;
+  border: 2px solid #ff7570;
+  border-radius: 4px;
+  transition-duration: 0.5s;
+}
+
 .formBtn:hover {
   background-color: #009fff;
+  color: white;
+}
+
+.backBtn:hover {
+  background-color: #ff7570;
   color: white;
 }
 
@@ -262,7 +280,7 @@ code {
 }
 
 .completeDiv {
-  margin: 0 auto;
+  margin-top: 20%;
   text-align: center;
 }
 

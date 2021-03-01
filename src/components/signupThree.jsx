@@ -2,53 +2,62 @@ import React, {Component, Fragment} from "react";
 import mmIcon from '../static/mm_icon_gradient.png';
 import uploadIcon from '../static/upload.png';
 import delIcon from '../static/delete.png';
-import SignupComplete from "./signupComplete";
 
 class SignupThree extends Component {
     state = {
         images: [],
         loc_limit: 50,
+        img_files: [],
         isUploaded: [false, false, false]
     }
 
-    finishSignup = e => {
+    //signup is complete, attempt to register and depending on success, go to signupComplete
+    //or display the error as to why
+    nextForm = (e) => {
+        const {registerUser} = this.props;
+        registerUser(e);
+    }
+
+    //go back to the last stage in the registration process
+    backForm = e => {
         e.preventDefault();
-        if(this.checkLimit()) {
-            const {finishSignup} = this.props;
-            finishSignup(e);
-        } else {
-            return false;
-        }
+        this.props.prevStage();
     }
 
     //function to change the upload icon for each image uploaded as a preview of the
     //image that was uploaded by the user
     handleImageUpload = (e, id) => {
-
+        const {handleImagesState} = this.props;
         let index = id;
         if(e.target.files && e.target.files[0]){
-
             let reader = new FileReader();
-
             //get the initial state and change the image to the uploaded one
             reader.onloadend = (e) => {
 
                 //change the state index for the image uploaded
-                let uploadBooleans = this.state.isUploaded;
-                let uploadImages = this.state.images;
-
-                uploadBooleans[index] = true;
-                uploadImages[index] = e.target.result;
+                let booleans = this.state.isUploaded;
+                let images = this.state.images;
+                booleans[index] = true;
+                images[index] = {"image": e.target.result};
 
                 this.setState({
-                    images: uploadImages,
-                    isUploaded: uploadBooleans
+                    images: images,
+                    isUploaded: booleans
                 });
-
             }
             reader.readAsDataURL(e.target.files[0]);
-        }
+            let files = [...this.state.img_files];
+            files[index] = {"image_file": e.target.files[0]};
 
+            //add the new images to the overall signupState
+            //use a callback to ensure the images are added after
+            //the current state is altered
+            this.setState({
+                img_files: files
+            }, () => {
+                handleImagesState(this.state.img_files);
+            });
+        }
     }
 
     //function to handle the changes made on the range limit field
@@ -64,12 +73,12 @@ class SignupThree extends Component {
     //function to remove an image uploaded
     removeUpload = (e, id) => {
         let index = id;
-        let removeBooleans = this.state.isUploaded;
-        let removeImages = this.state.images;
+        let removeBooleans = [...this.state.isUploaded];
+        let removeImages = [...this.state.images];
 
         removeBooleans[index] = false;
-        removeImages[index] = "";
-
+        removeImages[index] = null;
+        removeImages.splice(index, 1);
         this.setState({
             images: removeImages,
             isUploaded: removeBooleans
@@ -77,7 +86,7 @@ class SignupThree extends Component {
     }
 
     render() {
-        const {miscInfo, handleChange, handleKeyUp, finishSignup} = this.props;
+        const {miscInfo, handleChange, handleKeyUp} = this.props;
 
         return(
             <Fragment>
@@ -97,7 +106,7 @@ class SignupThree extends Component {
                                         src={delIcon}
                                     />
                                     <label htmlFor="imageInputOne" className="uploadBtn">
-                                        <img className="uploadedImg" alt="Upload icon" src={this.state.images[0]}/>
+                                        <img className="uploadedImg" alt="Upload icon" src={this.state.images[0].image}/>
                                     </label>
                                 </div>
                             ) : (
@@ -124,7 +133,7 @@ class SignupThree extends Component {
                                         src={delIcon}
                                     />
                                     <label htmlFor="imageInputTwo" className="uploadBtn">
-                                        <img className="uploadedImg" alt="Upload icon" src={this.state.images[1]}/>
+                                        <img className="uploadedImg" alt="Upload icon" src={this.state.images[1].image}/>
                                     </label>
                                 </div>
                             ) : (
@@ -151,7 +160,7 @@ class SignupThree extends Component {
                                         src={delIcon}
                                     />
                                     <label htmlFor="imageInputThree" className="uploadBtn">
-                                        <img className="uploadedImg" alt="Upload icon" src={this.state.images[2]}/>
+                                        <img className="uploadedImg" alt="Upload icon" src={this.state.images[2].image}/>
                                     </label>
                                 </div>
                             ) : (
@@ -225,9 +234,9 @@ class SignupThree extends Component {
                             step="1"
                             onChange={handleChange('loc_limit')}
                         />
-                        <button onClick={finishSignup} className="formBtn"><span>Finish</span></button>
+                        <button onClick={(e) => this.nextForm(e)} className="formBtn"><span>Finish</span></button>
+                        <button onClick={(e) => this.backForm(e)} className="backBtn"><span>Back</span></button>
                     </div>
-                <SignupComplete/>
             </Fragment>
         )
     }

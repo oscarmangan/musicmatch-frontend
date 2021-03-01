@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Redirect } from "react-router";
 import TopNine from "./topNine";
 
 class Homepage extends Component {
@@ -7,6 +8,7 @@ class Homepage extends Component {
     render() {
         return (
             <Fragment>
+                {this.props.isAuth ? <Redirect to='/home'/> : <Redirect to='/login'/>}
                 <h1>Homepage</h1>
                 <p>Welcome to musicmatch! This is the first prototype! Use the navigation menu
                 to work your way around the site. Below you will find the top nine closest musicians

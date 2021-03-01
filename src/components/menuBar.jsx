@@ -52,7 +52,7 @@ class MenuBar extends Component {
                         <div className="collapse navbar-collapse" id="navbarNav">
                             <ul className="navbar-nav ml-auto">
                                 <li className="nav-item">
-                                    <NavLink to="/signup/1" className="nav-link">Signup</NavLink>
+                                    <NavLink to="/signup" className="nav-link">Signup</NavLink>
                                 </li>
                                 <li className="nav-item">
                                     <NavLink to="/login" className="nav-link">Login</NavLink>

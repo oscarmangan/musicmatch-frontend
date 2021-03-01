@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import { NavLink } from 'react-router-dom';
+import {NavLink, Redirect} from 'react-router-dom';
 import mmIcon from "../static/mm_icon_gradient.png";
 
 class LoginForm extends Component {
@@ -20,11 +20,13 @@ class LoginForm extends Component {
     };
 
     render() {
+
         return (
             <Fragment>
                 <div className="circleIcon">
                     <img className="appIcon" alt="Musicmatch icon" src={mmIcon}/>
                 </div>
+                {this.props.isAuth ? <Redirect to='/home'/> : <Redirect to='/login'/> }
                 <form onSubmit={e => this.props.onClick(e, this.state.username, this.state.password)}>
                     <div className="appForm">
                         <h2>Login</h2>
@@ -45,7 +47,7 @@ class LoginForm extends Component {
                             className="formBtn">
                             <span>Login</span>
                         </button>
-                        <p>Not a member? <NavLink to="/signup">Create an account</NavLink></p>
+                        <p>Not a member? <NavLink to="/signup/">Create an account</NavLink></p>
                         <p>Forgot your password?</p>
                     </div>
                 </form>

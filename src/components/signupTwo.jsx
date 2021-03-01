@@ -4,6 +4,7 @@ import InstrumentsForm from "./instrumentsForm";
 import GenresForm from "./genresForm";
 import {Button, Modal} from "react-bootstrap";
 
+
 class SignupTwo extends Component {
     state = {
         genreCount: 0,
@@ -115,8 +116,7 @@ class SignupTwo extends Component {
         let thisExp = e.target.value;
         //create a mutable copy of the instruments array
         //find the index where the name matches the obj name
-        let instrArr = [...this.state.instruments]
-        console.log(thisExp);
+        let instrArr = [...this.state.instruments];
         let index = instrArr.findIndex(i => i.name === e.target.name.slice(0,-4))
         instrArr[index] = {
             instrument: e.target.id,
@@ -134,7 +134,6 @@ class SignupTwo extends Component {
     //function to ensure the user has input an experience level
     //for each instrument they have checked
     checkExp = () => {
-        console.log(this.state);
         let reg = /^[0-9]{1,2}$/;
         for(let i=0; i < this.state.instruments.length; i++){
             if(!this.state.instruments[i].experience_level.match(reg)) {
@@ -198,6 +197,7 @@ class SignupTwo extends Component {
                            maxLength="2"
                     />
                     <button onClick={() => this.handleModal(true)} className="formBtn"><span>Next</span></button>
+                    <button onClick={(e) => this.backForm(e)} className="backBtn"><span>Back</span></button>
                 </div>
             </Fragment>
         )

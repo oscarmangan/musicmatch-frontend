@@ -1,13 +1,14 @@
 import React, { Component, Fragment} from "react";
 import { NavLink } from "react-router-dom";
 import mmIcon from "../static/mm_icon_gradient.png";
+import {Redirect} from "react-router";
 
 class SignupOne extends Component {
     state = {}
 
     nextForm = () => {
-        const {nextStage} = this.props;
-        nextStage();
+        const {checkExists} = this.props;
+        checkExists();
     }
 
     render() {
@@ -15,6 +16,7 @@ class SignupOne extends Component {
 
         return (
             <Fragment>
+                {this.props.isAuth ? <Redirect to='/home'/> : <Redirect to='/signup'/>}
                 <div className="circleIcon">
                     <img className="appIcon" alt="Musicmatch icon" src={mmIcon}/>
                 </div>
