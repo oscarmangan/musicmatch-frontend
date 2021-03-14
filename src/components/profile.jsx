@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react';
 class Profile extends Component {
     state = {
         info: {
-            username: "",
+            username: this.props.uname,
             email: "",
             phone: "",
             town: "",
@@ -28,7 +28,7 @@ class Profile extends Component {
                     <div className="profileContent">
                         <div className="profileInfo">
                             <h3>Info</h3>
-                            <h6>Username: {this.state.info.username}</h6>
+                            <h6>Username: <b>{this.state.info.username}</b></h6>
                             <h6>Email: {this.state.info.email}</h6>
                             <h6>Phone Number: {this.state.info.phone}</h6>
                             <h6>Town: {this.state.info.town}</h6>
@@ -48,12 +48,6 @@ class Profile extends Component {
                             </ul>
                             <h6>Band Experience: {this.state.musicInfo.band_exp}</h6>
                         </div>
-                    </div>
-                    <div className="profileMusic">
-                        <h3>Music Samples</h3>
-                        <h5>Sample 1:</h5>
-                        <h5>Sample 2:</h5>
-                        <h5>Sample 3:</h5>
                     </div>
                 </div>
             </Fragment>

@@ -19,7 +19,6 @@ class App extends Component {
         this.state = {
             isAuthorised: localStorage.getItem('token') ? true : false,
             username: "",
-            email: "",
             HOST: 'http://127.0.0.1:8000/'
         }
     }
@@ -56,9 +55,11 @@ class App extends Component {
             }
         }).then(json => {
             localStorage.setItem('token', json.token);
+            console.log(json);
             this.setState({
-                isAuthorised: true
-            });
+                isAuthorised: true,
+                username: username
+            }, () => console.log(this.state.username));
         }).catch((error) => {
             console.log(error);
             throw error;

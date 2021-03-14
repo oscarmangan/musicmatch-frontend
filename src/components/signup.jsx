@@ -99,7 +99,7 @@ class Signup extends Component {
         }
     }
 
-    //get the users location via navigator (asked for in SignupTwo)
+    //get the users location via navigator
     getLocation = () => {
         navigator.geolocation.getCurrentPosition((pos) =>{
             let locString = pos.coords.latitude + "," + pos.coords.longitude;
