@@ -1,6 +1,8 @@
-import React, { Component, Fragment } from 'react';
-import mmIcon from "../static/mm_icon_gradient.png";
+import React, { Component } from 'react';
+import background_img from "../static/aura.jpg";
 import ProfileWidget from "./profileWidget";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 class TopNine extends Component {
     state = {
@@ -9,10 +11,43 @@ class TopNine extends Component {
 
     render() {
         return (
-            <div className="topNine">
+            <div className="topNine" style={{
+                background: `url(${background_img})`,
+            }}>
+                <Row>
+                    <Col style={{paddingLeft: "4vw"}}>
+                        <ProfileWidget
+                            username={'oscarmangan'}
+                            distance={7.05}
+                            image={"http://127.0.0.1:8000/media/user_images/33813/avatar.jpg"}
+                            score={2.4966}
+                        />
+                    </Col>
+                    <Col style={{paddingLeft: "1vw", paddingRight: "1vw"}}>
+                        <ProfileWidget
+                            username={'oscarmangan'}
+                            distance={7.05}
+                            image={"http://127.0.0.1:8000/media/user_images/33813/avatar.jpg"}
+                            score={2.4966}
+                        />
+                    </Col>
+                    <Col style={{paddingRight: "4vw"}}>
+                        <ProfileWidget
+                            username={'rachellai21'}
+                            distance={7.05}
+                            image={"http://127.0.0.1:8000/media/user_images/33812/PESPC_Le_Mans.jpg"}
+                            score={2.4966}
+                        />
+                    </Col>
+                </Row>
                 <div className="row">
                     <div className="col-sm justify-content-center">
-                        <ProfileWidget/>
+                        <ProfileWidget
+                            username={'hey'}
+                            distance={7.05}
+                            image={'http://127.0.0.1:8000/media/user_images/33812/PESPC_Le_Mans.jpg'}
+                            score={2.4596}
+                        />
                     </div>
                     <div className="col-sm justify-content-center">
                         <ProfileWidget/>
@@ -42,7 +77,7 @@ class TopNine extends Component {
                     <div className="col-sm">
                         <ProfileWidget/>
                     </div>
-                </div>
+                </div><br/>
             </div>
         )
     }

@@ -15,7 +15,7 @@ class Homepage extends Component {
                 to your preferences on your account. You can search the entire userbase either if you
                 like too. To edit your profile, click the 'Profile' menu option.</p>
 
-                <h2>Your Top 9</h2>
+                <h2>Your Top Recommendations</h2>
                 <TopNine />
             </Fragment>
         )
