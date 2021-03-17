@@ -1,54 +1,83 @@
 import React, { Component, Fragment } from 'react';
+import Carousel from "react-bootstrap/Carousel";
+import Image from "react-bootstrap/Image";
 
 class Profile extends Component {
     state = {
         info: {
-            username: this.props.uname,
+            username: "",
             email: "",
-            phone: "",
             town: "",
             age: "",
-            bio: ""
+            bio: "",
+            band_exp: "",
+            facebook_url: "",
+            twitter_url: "",
+            instagram_url: "",
+            music_url: "",
         },
         musicInfo: {
             genres: [],
             instruments: [],
             band_exp: ""
-        }
+        },
+        images: []
+    }
+
+    //once the profile component loads in, get the users profile details
+    componentDidMount() {
+        this.getRecommendations(this.props.user_id)
+    }
+
+    //function to retrieve the logged in users profile information
+    getRecommendations = (id) => {
+        let url = 'http://127.0.0.1:8000/api/users/' + id;
+
+        //perform the GET request to the URL to retrieve the profile
+        fetch(url)
+            .then(response => {
+                if (response.status === 200) {
+                    return response.json();
+                } else if(response.status === 400) {
+                    throw response;
+                } else if(!response.ok) {
+                    return false;
+                }
+            }).then(json => {
+                //add the JSON data into the state which will display said information
+                console.log(json);
+                this.setState({
+                    username: json.username,
+                    email: json.email,
+                    town: json.profile.town,
+                    bio: json.profile.bio,
+                    images: json.images,
+                })
+            }).catch((error) => {
+                console.log(error);
+                throw error;
+            });
     }
 
     render() {
         return(
             <Fragment>
-                <h2>Profile</h2>
+                <h2>{this.state.username}</h2>
                 <div className="profile">
-                    <div className="profileGallery">
-                        <h4>Gallery</h4>
-                    </div>
-                    <div className="profileContent">
-                        <div className="profileInfo">
-                            <h3>Info</h3>
-                            <h6>Username: <b>{this.state.info.username}</b></h6>
-                            <h6>Email: {this.state.info.email}</h6>
-                            <h6>Phone Number: {this.state.info.phone}</h6>
-                            <h6>Town: {this.state.info.town}</h6>
-                            <h6>Age: {this.state.info.age}</h6>
-                            <h6>Bio</h6>
-                            <p>{this.state.info.bio}</p>
-                        </div>
-                        <div className="profileInfo">
-                            <h3>Music</h3>
-                            <h6>Genres:</h6>
-                            <ul>
-
-                            </ul>
-                            <h6>Instruments:</h6>
-                            <ul>
-
-                            </ul>
-                            <h6>Band Experience: {this.state.musicInfo.band_exp}</h6>
-                        </div>
-                    </div>
+                    <Carousel>
+                        {this.state.images.map(img => {
+                            return(
+                                <Carousel.Item key={`${img}-key`}>
+                                    <Image
+                                        src={"http://127.0.0.1:8000" + img}
+                                        alt={"profile image"}
+                                        className="carouselImg"
+                                        fluid
+                                    />
+                                </Carousel.Item>
+                            )
+                        })}
+                    </Carousel>
                 </div>
             </Fragment>
         )

@@ -16,7 +16,9 @@ class Homepage extends Component {
                 like too. To edit your profile, click the 'Profile' menu option.</p>
 
                 <h2>Your Top Recommendations</h2>
-                <TopNine />
+                <TopNine
+                    user_id={this.props.user_id}
+                />
             </Fragment>
         )
     }

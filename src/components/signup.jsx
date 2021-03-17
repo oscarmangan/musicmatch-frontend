@@ -254,12 +254,37 @@ class Signup extends Component {
             } else if(!response.ok){
                 return false;
             } else if(response.status === 201) {
-                return this.nextStage();
+                return this.setRecommendations(data.id);
             }
         }).catch((error) => {
             console.log(error);
             throw error;
         });
+    }
+
+    //function that once the user profile is created, generate their recommendations
+    setRecommendations = (id) => {
+        fetch(this.state.HOST + 'set_recommendations/', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                user_id: id,
+            })
+        }).then(response => {
+            if(response.status === 400){
+                alert(response.status + " " + response.statusText + "\n" +
+                    "There was an issue setting your recommendations!");
+            } else if(!response.ok){
+                return false;
+            } else if(response.status === 201) {
+                return this.nextStage();
+            }
+        }).catch((error) => {
+            console.log(error);
+            throw error;
+        })
     }
 
     render() {

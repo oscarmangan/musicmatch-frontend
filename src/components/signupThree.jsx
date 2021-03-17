@@ -8,12 +8,16 @@ class SignupThree extends Component {
         images: [],
         loc_limit: 50,
         img_files: [],
-        isUploaded: [false, false, false]
+        isUploaded: [false, false, false],
+        finishBtnSpan: "Finish"
     }
 
     //signup is complete, attempt to register and depending on success, go to signupComplete
     //or display the error as to why
     nextForm = (e) => {
+        this.setState({
+            finishBtnSpan: "Please wait..."
+        });
         const {registerUser} = this.props;
         registerUser(e);
     }
@@ -234,7 +238,7 @@ class SignupThree extends Component {
                             step="1"
                             onChange={handleChange('loc_limit')}
                         />
-                        <button onClick={(e) => this.nextForm(e)} className="formBtn"><span>Finish</span></button>
+                        <button onClick={(e) => this.nextForm(e)} className="formBtn"><span>{this.state.finishBtnSpan}</span></button>
                         <button onClick={(e) => this.backForm(e)} className="backBtn"><span>Back</span></button>
                     </div>
             </Fragment>

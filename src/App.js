@@ -19,6 +19,7 @@ class App extends Component {
         this.state = {
             isAuthorised: localStorage.getItem('token') ? true : false,
             username: "",
+            id: localStorage.getItem('id'),
             HOST: 'http://127.0.0.1:8000/'
         }
     }
@@ -54,12 +55,13 @@ class App extends Component {
                 return false;
             }
         }).then(json => {
-            localStorage.setItem('token', json.token);
-            console.log(json);
             this.setState({
-                isAuthorised: true,
-                username: username
-            }, () => console.log(this.state.username));
+                username: username,
+                isAuthorised: true
+            }, () => {
+                localStorage.setItem('id', json.id);
+                localStorage.setItem('token', json.token);
+            });
         }).catch((error) => {
             console.log(error);
             throw error;
@@ -93,15 +95,17 @@ class App extends Component {
                             <Route path='/home'>
                                 <Homepage
                                     isAuth={this.state.isAuthorised}
+                                    user_id={localStorage.getItem('id')}
                                 />
                             </Route>
                             <Route path='/discover'>
-                                <Discover />
+                                <Discover
+                                    user_id={localStorage.getItem('id')}
+                                />
                             </Route>
                             <Route path='/profile'>
                                 <Profile
-                                    uname={this.state.username}
-                                    email={this.state.email}
+                                    user_id={localStorage.getItem('id')}
                                 />
                             </Route>
                             <Route path='/search'>
