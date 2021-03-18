@@ -48,7 +48,12 @@ class TopNine extends Component {
     render() {
         return (
             <div style={{padding: "15px"}}>
-                {this.state.recommendations.map((group, idx) => {
+                {/*
+                    For each subarray in the 2D array, create a new row and append each element as a column
+                    This results in three columns per row by the structure of the 2D array created
+                    when the data is retrieved from the server
+                */
+                    this.state.recommendations.map((group, idx) => {
                     let row_data = [];
                     group.map(rec => {
                         return row_data.push(
@@ -65,12 +70,15 @@ class TopNine extends Component {
                                     <Card.Body style={{padding: "2vh 0"}}>
                                         <small className="matchRate">{Math.round((rec.score / 3.5) * 100)}% match</small><br/>
                                         <small className="distanceRate">{Math.round(rec.distance_from_user)}km away</small>
-                                        <button className="widgetButton" onClick={()=>this.getRecommendations(30678)}>View Profile</button>
+                                        <NavLink className="nav-link" to={`/profile/${rec.recommendation.id}`}>
+                                            <button className="widgetButton">View Profile</button>
+                                        </NavLink>
                                     </Card.Body>
                                 </Card>
                             </Col>
                         )
                     });
+                        //once the end of the 3 element sub array is reached, return the new row to render
                     return(<Row key={idx} style={{marginBottom: "2vh"}}>{row_data}</Row>)
                 })}
                 <NavLink to="/discover/">

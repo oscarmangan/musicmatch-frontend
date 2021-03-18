@@ -17,8 +17,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isAuthorised: localStorage.getItem('token') ? true : false,
-            username: "",
+            isAuthorised: localStorage.getItem('id') ? true : false,
             id: localStorage.getItem('id'),
             HOST: 'http://127.0.0.1:8000/'
         }
@@ -55,12 +54,9 @@ class App extends Component {
                 return false;
             }
         }).then(json => {
+            localStorage.setItem('id', json.id);
             this.setState({
-                username: username,
                 isAuthorised: true
-            }, () => {
-                localStorage.setItem('id', json.id);
-                localStorage.setItem('token', json.token);
             });
         }).catch((error) => {
             console.log(error);
@@ -103,10 +99,8 @@ class App extends Component {
                                     user_id={localStorage.getItem('id')}
                                 />
                             </Route>
-                            <Route path='/profile'>
-                                <Profile
-                                    user_id={localStorage.getItem('id')}
-                                />
+                            <Route path='/profile/:id' exact>
+                                <Profile/>
                             </Route>
                             <Route path='/search'>
                                 <Search />

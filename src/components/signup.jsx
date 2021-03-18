@@ -229,7 +229,7 @@ class Signup extends Component {
             if (this.state.images.length > 0) {
                 return this.uploadPhotos(data);
             } else {
-                return this.nextStage();
+                return this.setRecommendations(data.id);
             }
         }).catch((error) => {
             console.log(error);

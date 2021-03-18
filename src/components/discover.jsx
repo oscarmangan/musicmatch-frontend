@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
+import {NavLink} from "react-router-dom";
+import Spinner from "react-bootstrap/Spinner";
 
 class Discover extends Component {
     state = {
@@ -9,6 +11,7 @@ class Discover extends Component {
         id: this.props.user_id
     }
 
+    //get the recommendations for the current logged in user
     componentDidMount() {
         this.getRecommendations(this.state.id);
     }
@@ -46,34 +49,48 @@ class Discover extends Component {
         return(
             <Fragment>
                 <h2>Discover</h2>
-                <div style={{padding: "15px"}}>
-                    {this.state.recommendations.map((group, idx) => {
-                        console.log(group);
-                        let row_data = [];
-                        group.map(rec => {
-                            return row_data.push(
-                                <Col style={{maxWidth: "33.333%", minWidth: "150px", padding: "0.5vw"}}>
-                                    <Card style={{textAlign:"center", maxWidth: "100%"}}>
-                                        <Card.Title style={{paddingTop: "0.5vh"}}>{rec.recommendation.username.length > 15 ?
-                                            rec.recommendation.username.slice(0,14) + "..." :
-                                            rec.recommendation.username
-                                        }</Card.Title>
-                                        <Card.Img
-                                            src={rec.recommendation.images[0]}
-                                            style={{minHeight: "200px", objectFit: "cover"}}
-                                        />
-                                        <Card.Body style={{padding: "2vh 0"}}>
-                                            <small className="matchRate">{Math.round((rec.score / 3.5) * 100)}% match</small><br/>
-                                            <small className="distanceRate">{Math.round(rec.distance_from_user)}km away</small>
-                                            <button className="widgetButton" onClick={()=>this.getRecommendations(30678)}>View Profile</button>
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-                            )
-                        });
-                        return(<Row style={{marginBottom: "2vh"}}>{row_data}</Row>)
-                    })}
-                </div>
+                {//play a spinner animation while waiting for the recommendations to load
+                    this.state.recommendations.length === 0 ?
+                        <div style={{textAlign:"center", padding: "30%"}}>
+                            <Spinner animation="border" style={{width: "100px", height: "100px"}} size="sm"/>
+                        </div>
+                     :
+                        <div style={{padding: "15px"}}>
+                        {/*
+                            For each subarray in the 2D array, create a new row and append each element as a column
+                            This results in three columns per row by the structure of the 2D array created
+                            when the data is retrieved from the server
+                        */
+                            this.state.recommendations.map((group, idx) => {
+                                let row_data = [];
+                                group.map(rec => {
+                                    return row_data.push(
+                                        <Col key={`${rec.recommendation.username}-col`} style={{maxWidth: "33.333%", minWidth: "150px", padding: "0.5vw"}}>
+                                            <Card style={{textAlign:"center", maxWidth: "100%"}}>
+                                                <Card.Title style={{paddingTop: "0.5vh"}}>{rec.recommendation.username.length > 15 ?
+                                                    rec.recommendation.username.slice(0,14) + "..." :
+                                                    rec.recommendation.username
+                                                }</Card.Title>
+                                                <Card.Img
+                                                    src={rec.recommendation.images[0]}
+                                                    style={{minHeight: "200px", objectFit: "cover"}}
+                                                />
+                                                <Card.Body style={{padding: "2vh 0"}}>
+                                                    <small className="matchRate">{Math.round((rec.score / 3.5) * 100)}% match</small><br/>
+                                                    <small className="distanceRate">{Math.round(rec.distance_from_user)}km away</small>
+                                                    <NavLink className="nav-link" to={`/profile/${rec.recommendation.id}`}>
+                                                        <button className="widgetButton">View Profile</button>
+                                                    </NavLink>
+                                                </Card.Body>
+                                            </Card>
+                                        </Col>
+                                    )
+                                });
+                                //once the end of the 3 element sub array is reached, return the new row to render
+                                return(<Row style={{marginBottom: "2vh"}}>{row_data}</Row>)
+                            })}
+                    </div>
+                }
             </Fragment>
         )
     }

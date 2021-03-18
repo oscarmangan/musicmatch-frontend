@@ -161,8 +161,14 @@ code {
   border-radius: 5px;
 }
 
+.profileInfo {
+  text-align: center;
+}
+
 .carouselImg {
-  margin: 0 auto;
+  text-align: center;
+  margin: 0 auto !important;
+  width: 80%;
 }
 
 .expHeading {
@@ -287,3 +293,49 @@ code {
   color: #009fff;
   border: 1px solid #009fff;
 }
+
+.instrumentInfoDiv {
+  width: 50%;
+  float: left;
+  text-align: center;
+}
+
+.genreInfoDiv {
+  text-align: center;
+}
+
+.genreInfoDiv > ul > li{
+  list-style-type: none;
+}
+
+.socialMedia {
+  text-align: center;
+}
+
+.socialTable {
+  width: 100%;
+}
+
+.socialLink {
+  color: black;
+}
+
+.socialLink:hover {
+  color: #009fff;
+  text-decoration: none;
+}
+
+#socialHeading {
+  margin-bottom: 2%;
+}
+
+.instrumentTable {
+  text-align: center;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.instrumentTable > tr > td {
+  padding: 2%;
+}
+

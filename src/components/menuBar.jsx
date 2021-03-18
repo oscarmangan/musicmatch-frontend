@@ -25,7 +25,7 @@ class MenuBar extends Component {
                                     <NavLink className="nav-link" to="/discover">Discover</NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <NavLink className="nav-link" to="/profile">Profile</NavLink>
+                                    <NavLink className="nav-link" to={`/profile/${localStorage.getItem('id')}`}>Profile</NavLink>
                                 </li>
                                 <li className="nav-item">
                                     <NavLink className="nav-link" to="/search">Search</NavLink>
