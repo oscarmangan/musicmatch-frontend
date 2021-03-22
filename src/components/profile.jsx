@@ -81,6 +81,13 @@ class Profile extends Component {
             });
     }
 
+    //function if the user is in the edit screen and wish to go back, change state
+    stopEditing = () => {
+        this.setState({
+            editing: false
+        });
+    }
+
     render() {
 
         return(
@@ -129,7 +136,7 @@ class Profile extends Component {
                             <div className="profileContent">
                                 <div className="instrumentInfoDiv">
                                     <h5>Instruments</h5>
-                                    <table className="instrumentTable">
+                                    <table className="musicTable">
                                         <tbody>
                                             {//map over the instruments and add a new table row for each
                                                 this.state.instruments.map(instrument => {
@@ -145,16 +152,20 @@ class Profile extends Component {
                                 </div>
                                 <div className="genreInfoDiv">
                                     <h5>Genres</h5>
-                                    <ul>
-                                        {//map over the genres in the state and create a new list element for each
-                                            this.state.genres.map(genre => {
-                                            return(
-                                                <li key={`${genre.name}`}>{genre.name}</li>
-                                            )
-                                        })}
-                                    </ul>
+                                    <table className="musicTable">
+                                        <tbody>
+                                            {//map over the genres in the state and create a new list element for each
+                                                this.state.genres.map(genre => {
+                                                return(
+                                                    <tr key={`${genre.name}-row`}>
+                                                        <td key={`${genre.name}`}>{genre.name}</td>
+                                                    </tr>
+                                                )
+                                            })}
+                                        </tbody>
+                                    </table>
                                 </div>
-                            </div><br/>
+                            </div>
                             <hr/>
                             <div className="socialMedia">
                                 <h5 id="socialHeading">Social Media</h5>
@@ -220,6 +231,7 @@ class Profile extends Component {
                     : //if the editing variable is true, render edit profile instead
                         <EditProfile
                             user_details={this.state}
+                            stopEditing={this.stopEditing}
                         /> }
             </Fragment>
         )

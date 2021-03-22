@@ -52,9 +52,9 @@ class EditProfile extends Component {
             alert("Facebook link is not acceptable! Make sure it follows the format: \n\n" +
                 "http(s)://www.facebook.com/(username)");
             return false;
-        } else if (music_url !== "" && music_url !== null && !music_url.match(/https?:\/\/(www\.)?music_url\.com\//)) {
+        } else if (music_url !== "" && music_url !== null && !music_url.match(/https?:\/\/(www\.)?[a-zA-Z0-9-]+\.com/)) {
             alert("Music link is not acceptable! Make sure it follows the format: \n\n" +
-                "http(s)://www.music_url.com/(username)");
+                "http(s)://www.music_url.com...");
             return false;
         } else if (twitter_url !== "" && twitter_url !== null && !twitter_url.match(/https?:\/\/(www\.)?twitter\.com\//)) {
             alert("Twitter link is not acceptable! Make sure it follows the format: \n\n" +
@@ -312,19 +312,25 @@ class EditProfile extends Component {
     }
 
     render(){
+
+        const {stopEditing} = this.props;
+
         return(
             <div style={{textAlign:"center"}}>
                 <h2>Edit Profile</h2>
                 {//if this value is true, show a spinner animation, this is used as a loading
                 //screen for when we're generating recommendations
                 this.state.generating === true ?
-                <div style={{textAlign:"center", padding: "30%"}}>
-                    <Spinner animation="border" style={{width: "100px", height: "100px"}} size="sm"/>
-                    <br/><br/><h3>Generating Recommendations</h3>
+                <div style={{textAlign:"center", padding: "10%"}}>
+                    <Spinner animation="border" style=
+                        {{width: "100px", height: "100px", marginTop: "12vh", color: "#009fff"}} size="sm"
+                    />
+                    <h3 style={{textAlign: "center", margin: "3vh"}}>Generating<br/>Recommendations</h3>
                 </div>
                     :
                 <div>
                     <div className="appForm">
+                        <button className="backBtn" onClick={() => stopEditing()}>Back</button>
                         <input
                             type="text"
                             placeholder="Music URL"
@@ -405,6 +411,7 @@ class EditProfile extends Component {
                     </div>
                     <hr/>
                     <button className="formBtn" onClick={() => this.handleModal(true)}>{this.state.buttonText}</button>
+                    <button className="backBtn" onClick={() => stopEditing()}>Back</button>
                     <Modal show={this.state.show} onHide={() => this.handleModal(false)}>
                         <Modal.Header closeButton>
                             <Modal.Title>Instrument Experience</Modal.Title>

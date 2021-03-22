@@ -73,6 +73,7 @@ class Discover extends Component {
                                                 }</Card.Title>
                                                 <Card.Img
                                                     src={"http://127.0.0.1:8000" + rec.recommendation.images[0]}
+                                                    alt={"user image"}
                                                     style={{minHeight: "200px", objectFit: "cover"}}
                                                 />
                                                 <Card.Body style={{padding: "2vh 0"}}>

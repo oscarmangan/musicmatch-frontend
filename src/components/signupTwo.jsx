@@ -184,6 +184,7 @@ class SignupTwo extends Component {
                     <h2>Musical Traits</h2>
                     <InstrumentsForm
                         onInstrumentChange={this.onInstrumentChange}
+                        prevIns={this.state.instruments}
                     />
                     <GenresForm
                         onGenreChange={this.onGenreChange}

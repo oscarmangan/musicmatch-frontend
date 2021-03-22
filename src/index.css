@@ -260,6 +260,26 @@ code {
   border-radius: 50%;
 }
 
+.uploadBtn:hover {
+  background-color: dodgerblue;
+  color: white;
+  border: 1px solid #009fff;
+}
+
+@media (max-width: 500px){
+  .uploadIcon {
+    width: 80px;
+    height: auto;
+  }
+
+  .uploadedImg {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+
 .limitValueBox::placeholder {
   color: black;
 }
@@ -294,6 +314,10 @@ code {
   border: 1px solid #009fff;
 }
 
+.profileContent {
+  display: flex;
+}
+
 .instrumentInfoDiv {
   width: 50%;
   float: left;
@@ -301,11 +325,8 @@ code {
 }
 
 .genreInfoDiv {
+  width: 50%;
   text-align: center;
-}
-
-.genreInfoDiv > ul > li{
-  list-style-type: none;
 }
 
 .socialMedia {
@@ -314,6 +335,12 @@ code {
 
 .socialTable {
   width: 100%;
+  table-layout: fixed;
+}
+
+.socialTable > tbody > tr > td {
+  min-width: 100%;
+  padding: 5px;
 }
 
 .socialLink {
@@ -329,13 +356,13 @@ code {
   margin-bottom: 2%;
 }
 
-.instrumentTable {
+.musicTable {
   text-align: center;
   margin: 0 auto;
   width: 80%;
 }
 
-.instrumentTable > tr > td {
+.musicTable > tr > td {
   padding: 2%;
 }
 

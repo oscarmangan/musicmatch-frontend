@@ -16,8 +16,10 @@ class GenresForm extends Component {
 
         //here we loop through each array objects into an array of IDs
         //for generating if certain checkboxes have already been checked
-        for(let i=0; i < prevGen.length; i++){
-            prevGen_ids.push(prevGen[i]['genre']);
+        if(prevGen) {
+            for (let i = 0; i < prevGen.length; i++) {
+                prevGen_ids.push(prevGen[i]['genre']);
+            }
         }
 
         return (

@@ -16,8 +16,10 @@ class InstrumentsForm extends Component {
 
         //here we loop through each array objects into an array of IDs
         //for generating if certain checkboxes have already been checked
-        for(let i=0; i < prevIns.length; i++){
-            prevIns_ids.push(prevIns[i]['instrument']);
+        if(prevIns) {
+            for (let i = 0; i < prevIns.length; i++) {
+                prevIns_ids.push(prevIns[i]['instrument']);
+            }
         }
 
         return (
