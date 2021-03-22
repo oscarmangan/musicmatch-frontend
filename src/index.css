@@ -339,3 +339,12 @@ code {
   padding: 2%;
 }
 
+.profileHeading {
+  margin: 2%;
+}
+
+.editBtn:hover {
+  color: #009fff;
+  text-decoration: underline;
+}
+

@@ -49,6 +49,7 @@ class App extends Component {
             if (response.status === 200) {
                 return response.json();
             } else if(response.status === 400) {
+                alert("Username or password is incorrect!");
                 throw response;
             } else if(!response.ok){
                 return false;
@@ -99,8 +100,14 @@ class App extends Component {
                                     user_id={localStorage.getItem('id')}
                                 />
                             </Route>
-                            <Route path='/profile/:id' exact>
+                            <Route key="view-profile" path='/profile/:id' exact>
                                 <Profile/>
+                            </Route>
+                            <Route key="my-profile" path='/my_profile'>
+                                <Profile
+                                    user_id={localStorage.getItem('id')}
+                                    editable={true}
+                                />
                             </Route>
                             <Route path='/search'>
                                 <Search />

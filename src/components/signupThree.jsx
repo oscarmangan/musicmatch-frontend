@@ -15,11 +15,14 @@ class SignupThree extends Component {
     //signup is complete, attempt to register and depending on success, go to signupComplete
     //or display the error as to why
     nextForm = (e) => {
-        this.setState({
-            finishBtnSpan: "Please wait..."
-        });
-        const {registerUser} = this.props;
-        registerUser(e);
+        const {checkForm} = this.props;
+        if(checkForm()){
+            this.setState({
+                finishBtnSpan: "Please wait..."
+            });
+            const {registerUser} = this.props;
+            registerUser(e);
+        }
     }
 
     //go back to the last stage in the registration process

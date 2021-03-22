@@ -54,7 +54,6 @@ class Signup extends Component {
         this.setState({
             [input]: e.target.value
         });
-        console.log(this.state);
     }
 
     //function to add images from state upon upload in SignupThree
@@ -114,8 +113,10 @@ class Signup extends Component {
 
     //function to check all input fields have been filled in correctly
     checkForm = () => {
-        const {email, username, password, confPassword} = this.state;
+        const {email, username, password, confPassword, music_url,
+                facebook_url, instagram_url, twitter_url} = this.state;
         let emailValidity = /^[A-Za-z0-9.]+@[A-Za-z0-9]+\.[A-Za-z]+$/;
+
         if(email === "") {
             alert("Email is empty!");
             return false;
@@ -134,8 +135,24 @@ class Signup extends Component {
         } else if (username.length < 6) {
             alert("Username must be at least six characters!");
             return false;
-        }  else if(password.length < 8) {
+        }  else if (password.length < 8) {
             alert("Password must be at least 8 characters!");
+            return false;
+        } else if (facebook_url !== "" && !facebook_url.match(/https?:\/\/(www\.)?facebook\.com\//)){
+            alert("Facebook link is not acceptable! Make sure it follows the format: \n\n" +
+                  "http(s)://www.facebook.com/(username)");
+            return false;
+        } else if (music_url !== "" && !music_url.match(/https?:\/\/(www\.)?music_url\.com\//)) {
+            alert("Music link is not acceptable! Make sure it follows the format: \n\n" +
+                "http(s)://www.music_url.com/(username)");
+            return false;
+        } else if (twitter_url !== "" && !twitter_url.match(/https?:\/\/(www\.)?twitter\.com\//)) {
+            alert("Twitter link is not acceptable! Make sure it follows the format: \n\n" +
+                "http(s)://www.twitter.com/(username)");
+            return false;
+        } else if (instagram_url !== "" && !instagram_url.match(/https?:\/\/(www\.)?instagram\.com\//)) {
+            alert("Instagram link is not acceptable! Make sure it follows the format: \n\n" +
+                "http(s)://www.instagram.com/(username)");
             return false;
         } else {
             return true;
@@ -179,7 +196,6 @@ class Signup extends Component {
 
     registerUser = (e, signupState) => {
         e.preventDefault();
-        console.log(signupState);
         //for this optional field, if no value was entered, set to 0
         if (signupState.band_exp === "") {
             signupState.band_exp = 0;
@@ -215,7 +231,6 @@ class Signup extends Component {
                 instruments: signupState.instruments,
             })
         }).then(response => {
-            console.log(response);
             if (response.status === 400) {
                 alert(response.status + " " + response.statusText + "\n" +
                     "Please make sure your details such as username and email are correct along with your location allowed!");
@@ -225,7 +240,6 @@ class Signup extends Component {
                 return response.json()
             }
         }).then(data => {
-            console.log(this.state.images.length);
             if (this.state.images.length > 0) {
                 return this.uploadPhotos(data);
             } else {
@@ -333,6 +347,7 @@ class Signup extends Component {
                     miscInfo={miscInfo}
                     handleImagesState={this.handleImagesState}
                     registerUser={(e) => this.registerUser(e, this.state)}
+                    checkForm={this.checkForm}
                 />
             )
         } else if (stage === 4) {

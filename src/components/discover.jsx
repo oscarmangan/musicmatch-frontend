@@ -72,7 +72,7 @@ class Discover extends Component {
                                                     rec.recommendation.username
                                                 }</Card.Title>
                                                 <Card.Img
-                                                    src={rec.recommendation.images[0]}
+                                                    src={"http://127.0.0.1:8000" + rec.recommendation.images[0]}
                                                     style={{minHeight: "200px", objectFit: "cover"}}
                                                 />
                                                 <Card.Body style={{padding: "2vh 0"}}>
@@ -87,7 +87,7 @@ class Discover extends Component {
                                     )
                                 });
                                 //once the end of the 3 element sub array is reached, return the new row to render
-                                return(<Row style={{marginBottom: "2vh"}}>{row_data}</Row>)
+                                return(<Row key={`${idx}`} style={{marginBottom: "2vh"}}>{row_data}</Row>)
                             })}
                     </div>
                 }

@@ -59,12 +59,12 @@ class TopNine extends Component {
                         return row_data.push(
                             <Col key={`${rec.recommendation.username}-col`} style={{maxWidth: "33.333%", minWidth: "150px", padding: "0.5vw"}}>
                                 <Card style={{textAlign:"center", maxWidth: "100%"}}>
-                                    <Card.Title style={{paddingTop: "0.5vh"}}>{rec.recommendation.username.length > 15 ?
-                                        rec.recommendation.username.slice(0,15)+"..." :
+                                    <Card.Title style={{paddingTop: "0.5vh"}}>{rec.recommendation.username.length > 14 ?
+                                        rec.recommendation.username.slice(0,14)+"..." :
                                         rec.recommendation.username
                                     }</Card.Title>
                                     <Card.Img
-                                        src={rec.recommendation.images[0]}
+                                        src={"http://127.0.0.1:8000" + rec.recommendation.images[0]}
                                         style={{minHeight: "200px", objectFit: "cover"}}
                                     />
                                     <Card.Body style={{padding: "2vh 0"}}>
