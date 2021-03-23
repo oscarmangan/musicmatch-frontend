@@ -10,7 +10,6 @@ import Signup from "./components/signup";
 import Homepage from "./components/homepage";
 import Discover from "./components/discover";
 import Profile from "./components/profile";
-import Search from "./components/search";
 import SignupComplete from "./components/signupComplete";
 
 class App extends Component {
@@ -49,7 +48,6 @@ class App extends Component {
             if (response.status === 200) {
                 return response.json();
             } else if(response.status === 400) {
-                alert("Username or password is incorrect!");
                 throw response;
             } else if(!response.ok){
                 return false;
@@ -109,8 +107,8 @@ class App extends Component {
                                     editable={true}
                                 />
                             </Route>
-                            <Route path='/search'>
-                                <Search />
+                            <Route path='/edit_profile'>
+                                <editProfile/>
                             </Route>
                             <Route path='/login'>
                                 <LoginForm

@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
 import {NavLink} from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 
@@ -65,7 +63,7 @@ class Discover extends Component {
                                 let row_data = [];
                                 group.map(rec => {
                                     return row_data.push(
-                                        <Col key={`${rec.recommendation.username}-col`} style={{maxWidth: "33.333%", minWidth: "150px", padding: "0.5vw"}}>
+                                        <div className="col-sm" key={`${rec.recommendation.username}-col`} style={{marginBottom: "1vh", padding: "0.5vw", minWidth: "180px"}}>
                                             <Card style={{textAlign:"center", maxWidth: "100%"}}>
                                                 <Card.Title style={{paddingTop: "0.5vh"}}>{rec.recommendation.username.length > 15 ?
                                                     rec.recommendation.username.slice(0,14) + "..." :
@@ -84,11 +82,11 @@ class Discover extends Component {
                                                     </NavLink>
                                                 </Card.Body>
                                             </Card>
-                                        </Col>
+                                        </div>
                                     )
                                 });
                                 //once the end of the 3 element sub array is reached, return the new row to render
-                                return(<Row key={`${idx}`} style={{marginBottom: "2vh"}}>{row_data}</Row>)
+                                return(<div key={idx} style={{marginBottom: "2vh"}} className="row">{row_data}</div>)
                             })}
                     </div>
                 }

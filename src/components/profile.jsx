@@ -179,7 +179,7 @@ class Profile extends Component {
                                                     return(
                                                         <td key={"twitter cell"}>
                                                         <a className="socialLink" target="_blank" rel="noopener noreferrer" href={this.state.socials.twitter_url}>
-                                                            <h5>
+                                                            <h5 className="socialText">
                                                                 <FontAwesomeIcon icon={faTwitter}/><br/>Twitter
                                                             </h5>
                                                         </a>
@@ -189,7 +189,7 @@ class Profile extends Component {
                                                     return(
                                                         <td key={"instagram cell"}>
                                                             <a className="socialLink" target="_blank" rel="noopener noreferrer" href={this.state.socials.instagram_url}>
-                                                                <h5>
+                                                                <h5 className="socialText">
                                                                     <FontAwesomeIcon icon={faInstagram}/><br/>Instagram
                                                                 </h5>
                                                             </a>
@@ -199,7 +199,7 @@ class Profile extends Component {
                                                     return(
                                                         <td key={"facebook cell"}>
                                                             <a className="socialLink" target="_blank" rel="noopener noreferrer" href={this.state.socials.facebook_url}>
-                                                                <h5>
+                                                                <h5 className="socialText">
                                                                     <FontAwesomeIcon icon={faFacebook}/><br/>Facebook
                                                                 </h5>
                                                             </a>
@@ -209,7 +209,7 @@ class Profile extends Component {
                                                     return(
                                                         <td key={"music cell"}>
                                                             <a className="socialLink" target="_blank" rel="noopener noreferrer" href={this.state.socials.music_url}>
-                                                                <h5>
+                                                                <h5 className="socialText">
                                                                     <FontAwesomeIcon icon={faMusic}/><br/>My Music
                                                                 </h5>
                                                             </a>

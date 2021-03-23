@@ -278,6 +278,10 @@ code {
     object-fit: cover;
     border-radius: 50%;
   }
+
+  .socialText {
+    font-size: 14px;
+  }
 }
 
 .limitValueBox::placeholder {
