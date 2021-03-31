@@ -34,6 +34,7 @@ class InstrumentsForm extends Component {
                             <label className="preferenceBtn">
                                 {prevIns_ids.includes(1) === false ?
                                 <input
+                                    data-testid={'acc'}
                                     value={1}
                                     type="checkbox"
                                     onChange={onInstrumentChange}
@@ -42,6 +43,7 @@ class InstrumentsForm extends Component {
                                     defaultChecked={false}
                                 /> :
                                 <input
+                                    data-testid={'acc'}
                                     value={1}
                                     type="checkbox"
                                     onChange={onInstrumentChange}
@@ -55,6 +57,7 @@ class InstrumentsForm extends Component {
                             <label className="preferenceBtn">
                                 {prevIns_ids.includes(2) === false ?
                                     <input
+                                        data-testid={'aco'}
                                         value={2}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -63,6 +66,7 @@ class InstrumentsForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'aco'}
                                         value={2}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -76,6 +80,7 @@ class InstrumentsForm extends Component {
                             <label className="preferenceBtn">
                                 {prevIns_ids.includes(3) === false ?
                                     <input
+                                        data-testid={'ban'}
                                         value={3}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -84,6 +89,7 @@ class InstrumentsForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'ban'}
                                         value={3}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -100,6 +106,7 @@ class InstrumentsForm extends Component {
                             <label className="preferenceBtn">
                                 {prevIns_ids.includes(4) === false ?
                                     <input
+                                        data-testid={'bas'}
                                         value={4}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -108,6 +115,7 @@ class InstrumentsForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'bas'}
                                         value={4}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -122,6 +130,7 @@ class InstrumentsForm extends Component {
                             <label className="preferenceBtn">
                                 {prevIns_ids.includes(5) === false ?
                                     <input
+                                        data-testid={'cel'}
                                         value={5}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -130,6 +139,7 @@ class InstrumentsForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'cel'}
                                         value={5}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -144,6 +154,7 @@ class InstrumentsForm extends Component {
                             <label className="preferenceBtn">
                                 {prevIns_ids.includes(6) === false ?
                                     <input
+                                        data-testid={'cla'}
                                         value={6}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -152,6 +163,7 @@ class InstrumentsForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'cla'}
                                         value={6}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -168,6 +180,7 @@ class InstrumentsForm extends Component {
                             <label className="preferenceBtn">
                                 {prevIns_ids.includes(7) === false ?
                                     <input
+                                        data-testid={'dbl'}
                                         value={7}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -176,6 +189,7 @@ class InstrumentsForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'dbl'}
                                         value={7}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -190,6 +204,7 @@ class InstrumentsForm extends Component {
                             <label className="preferenceBtn">
                                 {prevIns_ids.includes(8) === false ?
                                     <input
+                                        data-testid={'dru'}
                                         value={8}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -198,6 +213,7 @@ class InstrumentsForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'dru'}
                                         value={8}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -212,6 +228,7 @@ class InstrumentsForm extends Component {
                             <label className="preferenceBtn">
                                 {prevIns_ids.includes(9) === false ?
                                     <input
+                                        data-testid={'ele'}
                                         value={9}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -220,6 +237,7 @@ class InstrumentsForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'ele'}
                                         value={9}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -236,6 +254,7 @@ class InstrumentsForm extends Component {
                             <label className="preferenceBtn">
                                 {prevIns_ids.includes(10) === false ?
                                     <input
+                                        data-testid={'flu'}
                                         value={10}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -244,6 +263,7 @@ class InstrumentsForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'flu'}
                                         value={10}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -258,6 +278,7 @@ class InstrumentsForm extends Component {
                             <label className="preferenceBtn">
                                 {prevIns_ids.includes(11) === false ?
                                     <input
+                                        data-testid={'har'}
                                         value={11}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -266,6 +287,7 @@ class InstrumentsForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'har'}
                                         value={11}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -280,6 +302,7 @@ class InstrumentsForm extends Component {
                             <label className="preferenceBtn">
                                 {prevIns_ids.includes(12) === false ?
                                     <input
+                                        data-testid={'man'}
                                         value={12}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -288,6 +311,7 @@ class InstrumentsForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'man'}
                                         value={12}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -304,6 +328,7 @@ class InstrumentsForm extends Component {
                             <label className="preferenceBtn">
                                 {prevIns_ids.includes(13) === false ?
                                     <input
+                                        data-testid={'pia'}
                                         value={13}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -312,6 +337,7 @@ class InstrumentsForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'pia'}
                                         value={13}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -326,6 +352,7 @@ class InstrumentsForm extends Component {
                             <label className="preferenceBtn">
                                 {prevIns_ids.includes(14) === false ?
                                     <input
+                                        data-testid={'sax'}
                                         value={14}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -334,6 +361,7 @@ class InstrumentsForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'sax'}
                                         value={14}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -348,6 +376,7 @@ class InstrumentsForm extends Component {
                             <label className="preferenceBtn">
                                 {prevIns_ids.includes(15) === false ?
                                     <input
+                                        data-testid={'tro'}
                                         value={15}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -356,6 +385,7 @@ class InstrumentsForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'tro'}
                                         value={15}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -372,6 +402,7 @@ class InstrumentsForm extends Component {
                             <label className="preferenceBtn">
                                 {prevIns_ids.includes(16) === false ?
                                     <input
+                                        data-testid={'tru'}
                                         value={16}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -380,6 +411,7 @@ class InstrumentsForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'tru'}
                                         value={16}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -394,6 +426,7 @@ class InstrumentsForm extends Component {
                             <label className="preferenceBtn">
                                 {prevIns_ids.includes(17) === false ?
                                     <input
+                                        data-testid={'tub'}
                                         value={17}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -402,6 +435,7 @@ class InstrumentsForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'tub'}
                                         value={17}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -416,6 +450,7 @@ class InstrumentsForm extends Component {
                             <label className="preferenceBtn">
                                 {prevIns_ids.includes(18) === false ?
                                     <input
+                                        data-testid={'vio'}
                                         value={18}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -424,6 +459,7 @@ class InstrumentsForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'vio'}
                                         value={18}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -440,6 +476,7 @@ class InstrumentsForm extends Component {
                             <label className="preferenceBtn">
                                 {prevIns_ids.includes(19) === false ?
                                     <input
+                                        data-testid={'vil'}
                                         value={19}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -448,6 +485,7 @@ class InstrumentsForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'vil'}
                                         value={19}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -462,6 +500,7 @@ class InstrumentsForm extends Component {
                             <label className="preferenceBtn">
                                 {prevIns_ids.includes(20) === false ?
                                     <input
+                                        data-testid={'voc'}
                                         value={20}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -470,6 +509,7 @@ class InstrumentsForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'voc'}
                                         value={20}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -484,6 +524,7 @@ class InstrumentsForm extends Component {
                             <label className="preferenceBtn">
                                 {prevIns_ids.includes(21) === false ?
                                     <input
+                                        data-testid={'xyl'}
                                         value={21}
                                         type="checkbox"
                                         onChange={onInstrumentChange}
@@ -492,6 +533,7 @@ class InstrumentsForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'xyl'}
                                         value={21}
                                         type="checkbox"
                                         onChange={onInstrumentChange}

@@ -27,9 +27,6 @@ class MenuBar extends Component {
                                 <li className="nav-item">
                                     <NavLink className="nav-link" to="/my_profile">Profile</NavLink>
                                 </li>
-                                <li className="nav-item">
-                                    <NavLink className="nav-link" to="/search">Search</NavLink>
-                                </li>
                             </ul>
                             <ul className="navbar-nav ml-auto">
                                 <li className="nav-item">

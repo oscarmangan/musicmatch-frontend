@@ -34,6 +34,7 @@ class GenresForm extends Component {
                             <label className="preferenceBtn">
                                 {prevGen_ids.includes(15) === false ?
                                     <input
+                                        data-testid={'alt'}
                                         value={15}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -42,6 +43,7 @@ class GenresForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'alt'}
                                         value={15}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -56,6 +58,7 @@ class GenresForm extends Component {
                             <label className="preferenceBtn">
                                 {prevGen_ids.includes(14) === false ?
                                     <input
+                                        data-testid={'blu'}
                                         value={14}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -64,6 +67,7 @@ class GenresForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'blu'}
                                         value={14}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -78,6 +82,7 @@ class GenresForm extends Component {
                             <label className="preferenceBtn">
                                 {prevGen_ids.includes(13) === false ?
                                     <input
+                                        data-testid={'cla'}
                                         value={13}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -86,6 +91,7 @@ class GenresForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'cla'}
                                         value={13}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -102,6 +108,7 @@ class GenresForm extends Component {
                             <label className="preferenceBtn">
                                 {prevGen_ids.includes(12) === false ?
                                     <input
+                                        data-testid={'cou'}
                                         value={12}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -110,6 +117,7 @@ class GenresForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'cou'}
                                         value={12}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -124,6 +132,7 @@ class GenresForm extends Component {
                             <label className="preferenceBtn">
                                 {prevGen_ids.includes(11) === false ?
                                     <input
+                                        data-testid={'dis'}
                                         value={11}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -132,6 +141,7 @@ class GenresForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'dis'}
                                         value={11}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -146,6 +156,7 @@ class GenresForm extends Component {
                             <label className="preferenceBtn">
                                 {prevGen_ids.includes(10) === false ?
                                     <input
+                                        data-testid={'ele'}
                                         value={10}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -154,6 +165,7 @@ class GenresForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'ele'}
                                         value={10}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -170,6 +182,7 @@ class GenresForm extends Component {
                             <label className="preferenceBtn">
                                 {prevGen_ids.includes(9) === false ?
                                     <input
+                                        data-testid={'hip'}
                                         value={9}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -178,6 +191,7 @@ class GenresForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'hip'}
                                         value={9}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -192,6 +206,7 @@ class GenresForm extends Component {
                             <label className="preferenceBtn">
                                 {prevGen_ids.includes(8) === false ?
                                     <input
+                                        data-testid={'ind'}
                                         value={8}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -200,6 +215,7 @@ class GenresForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'ind'}
                                         value={8}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -214,6 +230,7 @@ class GenresForm extends Component {
                             <label className="preferenceBtn">
                                 {prevGen_ids.includes(7) === false ?
                                     <input
+                                        data-testid={'jaz'}
                                         value={7}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -222,6 +239,7 @@ class GenresForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'jaz'}
                                         value={7}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -238,6 +256,7 @@ class GenresForm extends Component {
                             <label className="preferenceBtn">
                                 {prevGen_ids.includes(6) === false ?
                                     <input
+                                        data-testid={'met'}
                                         value={6}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -246,6 +265,7 @@ class GenresForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'met'}
                                         value={6}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -260,6 +280,7 @@ class GenresForm extends Component {
                             <label className="preferenceBtn">
                                 {prevGen_ids.includes(5) === false ?
                                     <input
+                                        data-testid={'pop'}
                                         value={5}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -268,6 +289,7 @@ class GenresForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'pop'}
                                         value={5}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -282,6 +304,7 @@ class GenresForm extends Component {
                             <label className="preferenceBtn">
                                 {prevGen_ids.includes(4) === false ?
                                     <input
+                                        data-testid={'r&b'}
                                         value={4}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -290,6 +313,7 @@ class GenresForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'r&b'}
                                         value={4}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -306,6 +330,7 @@ class GenresForm extends Component {
                             <label className="preferenceBtn">
                                 {prevGen_ids.includes(3) === false ?
                                     <input
+                                        data-testid={'reg'}
                                         value={3}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -314,6 +339,7 @@ class GenresForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'reg'}
                                         value={3}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -328,6 +354,7 @@ class GenresForm extends Component {
                             <label className="preferenceBtn">
                                 {prevGen_ids.includes(2) === false ?
                                     <input
+                                        data-testid={'roc'}
                                         value={2}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -336,6 +363,7 @@ class GenresForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'roc'}
                                         value={2}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -350,6 +378,7 @@ class GenresForm extends Component {
                             <label className="preferenceBtn">
                                 {prevGen_ids.includes(1) === false ?
                                     <input
+                                        data-testid={'tra'}
                                         value={1}
                                         type="checkbox"
                                         onChange={onGenreChange}
@@ -358,6 +387,7 @@ class GenresForm extends Component {
                                         defaultChecked={false}
                                     /> :
                                     <input
+                                        data-testid={'tra'}
                                         value={1}
                                         type="checkbox"
                                         onChange={onGenreChange}

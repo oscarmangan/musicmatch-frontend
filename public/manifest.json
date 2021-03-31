@@ -1,6 +1,7 @@
 {
   "short_name": "Musicmatch",
   "name": "Musicmatch",
+  "description": "Providing musicians a platform to connect.",
   "icons": [
     {
       "src": "favicon.ico",

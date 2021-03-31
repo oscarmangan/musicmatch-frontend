@@ -43,6 +43,7 @@ class LoginForm extends Component {
                             required
                         />
                         <button
+                            data-testid={'submit-button'}
                             type="submit"
                             className="formBtn">
                             <span>Login</span>

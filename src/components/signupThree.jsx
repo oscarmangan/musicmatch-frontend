@@ -235,11 +235,12 @@ class SignupThree extends Component {
                                className="limitValueBox"
                         />
                         <input type="range"
-                            id="distance"
-                            min="1"
-                            max="100"
-                            step="1"
-                            onChange={handleChange('loc_limit')}
+                               data-testid={'loc_range'}
+                               id="distance"
+                               min="1"
+                               max="100"
+                               step="1"
+                               onChange={handleChange('loc_limit')}
                         />
                         <button onClick={(e) => this.nextForm(e)} className="formBtn"><span>{this.state.finishBtnSpan}</span></button>
                         <button onClick={(e) => this.backForm(e)} className="backBtn"><span>Back</span></button>

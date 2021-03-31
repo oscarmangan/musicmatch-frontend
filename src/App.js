@@ -48,12 +48,14 @@ class App extends Component {
             if (response.status === 200) {
                 return response.json();
             } else if(response.status === 400) {
+                alert("Username or Password are incorrect!");
                 throw response;
             } else if(!response.ok){
                 return false;
             }
         }).then(json => {
             localStorage.setItem('id', json.id);
+            localStorage.setItem('token', json.token);
             this.setState({
                 isAuthorised: true
             });
@@ -106,9 +108,6 @@ class App extends Component {
                                     user_id={localStorage.getItem('id')}
                                     editable={true}
                                 />
-                            </Route>
-                            <Route path='/edit_profile'>
-                                <editProfile/>
                             </Route>
                             <Route path='/login'>
                                 <LoginForm

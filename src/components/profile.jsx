@@ -34,15 +34,15 @@ class Profile extends Component {
     componentDidMount() {
 
         if(this.props.user_id === localStorage.getItem('id')){
-            this.getRecommendations(this.props.user_id);
+            this.getUser(this.props.user_id);
         } else {
-            this.getRecommendations(this.props.match.params.id);
+            this.getUser(this.props.match.params.id);
         }
 
     }
 
     //function to retrieve the logged in users profile information
-    getRecommendations = (id) => {
+    getUser = (id) => {
         let url = 'http://127.0.0.1:8000/api/users/' + id;
 
         //perform the GET request to the URL to retrieve the profile
@@ -124,9 +124,11 @@ class Profile extends Component {
                             <hr/>
                             <div className="profileInfo">
                                 <h5><FontAwesomeIcon icon={faEnvelope}/> {this.state.email}</h5>
-                                <h5><FontAwesomeIcon icon={faLocationArrow}/> {this.state.town}</h5>
-                                <h5>{this.state.age !== "" || this.state.age !== null ?
-                                    this.state.age + " years old" : ""
+                                {this.state.town === "" || this.state.town === null ?
+                                    "" : <h5><FontAwesomeIcon icon={faLocationArrow}/> {this.state.town}</h5>
+                                }
+                                <h5>{this.state.age === "" || this.state.age === null ?
+                                    "" : this.state.age + " years old"
                                 }</h5>
                                 <h5>{this.state.band_exp !== 0 ? this.state.band_exp + " years band experience" :
                                     "No band experience"

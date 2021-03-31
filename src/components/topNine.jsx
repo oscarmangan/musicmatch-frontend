@@ -64,7 +64,7 @@ class TopNine extends Component {
                                     <Card.Img
                                         src={"http://127.0.0.1:8000" + rec.recommendation.images[0]}
                                         alt={"user image"}
-                                        style={{minHeight: "200px", objectFit: "cover"}}
+                                        style={{minHeight: "200px", maxHeight: "200px", objectFit: "cover"}}
                                     />
                                     <Card.Body style={{padding: "2vh 0"}}>
                                         <small className="matchRate">{Math.round((rec.score / 3.5) * 100)}% match</small><br/>

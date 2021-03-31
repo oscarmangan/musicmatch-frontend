@@ -11,7 +11,6 @@ const filesToCache = [
     '/static/media/ok.3ea809aa.png',
     '/static/media/upload.797a78ad.png',
     '/static/media/delete.5cc943d2.png',
-    '/offline.html',
 ];
 
 // Cache on install

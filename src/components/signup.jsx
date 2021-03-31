@@ -142,7 +142,7 @@ class Signup extends Component {
             alert("Facebook link is not acceptable! Make sure it follows the format: \n\n" +
                   "http(s)://www.facebook.com/(username)");
             return false;
-        } else if (music_url !== "" && !music_url.match(/https?:\/\/(www\.)?music_url\.com\//)) {
+        } else if (music_url !== "" && !music_url.match(/https?:\/\/(www\.)?[a-zA-Z0-9-]+\.com/)) {
             alert("Music link is not acceptable! Make sure it follows the format: \n\n" +
                 "http(s)://www.music_url.com/(username)");
             return false;
