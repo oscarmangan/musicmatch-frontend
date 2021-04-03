@@ -42,10 +42,10 @@ class SignupOne extends Component {
                         />
                         <button onClick={() => this.nextForm()} className="formBtn"><span>Next</span></button>
                         <small id="passwordHelpBlock" className="form-text text-muted">
-                            Your password cannot be too similar to previous information entered.
+                            Your password should not be too similar to previous information entered.
                         </small>
                         <small id="passwordHelpBlock" className="form-text text-muted">
-                            Your password must consist of letters <u>and</u> numbers.
+                            Your username must be at least <u>6</u> characters.
                         </small>
                         <small id="passwordHelpBlock" className="form-text text-muted">
                             Your password must be at least <u>8</u> characters.
