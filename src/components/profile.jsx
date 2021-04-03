@@ -43,7 +43,7 @@ class Profile extends Component {
 
     //function to retrieve the logged in users profile information
     getUser = (id) => {
-        let url = 'http://127.0.0.1:8000/api/users/' + id;
+        let url = 'http://54.155.93.184:8000/api/users/' + id;
 
         //perform the GET request to the URL to retrieve the profile
         fetch(url)
@@ -112,7 +112,7 @@ class Profile extends Component {
                                             key={`${img}-key`}
                                             style={{textAlign:"center", backgroundColor: "black"}}>
                                             <Image
-                                                src={"http://127.0.0.1:8000" + img}
+                                                src={"http://54.155.93.184:8000" + img}
                                                 alt={"profile image"}
                                                 className="carouselImg"
                                                 fluid

@@ -8,7 +8,7 @@ class Signup extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            HOST: "http://127.0.0.1:8000/",
+            HOST: "http://54.155.93.184:8000/",
             stage: 1,
             email: "",
             username: "",

@@ -15,7 +15,7 @@ class TopNine extends Component {
 
     //function to retrieve the logged in users top recommendations
     getRecommendations = (id) => {
-        let url = 'http://127.0.0.1:8000/get_recommendations/?id=' + id + '&limit=true';
+        let url = 'http://54.155.93.184:8000/get_recommendations/?id=' + id + '&limit=true';
 
         //perform the GET request to the URL to retrieve the recommendations
         fetch(url)
@@ -62,7 +62,7 @@ class TopNine extends Component {
                                         rec.recommendation.username
                                     }</Card.Title>
                                     <Card.Img
-                                        src={"http://127.0.0.1:8000" + rec.recommendation.images[0]}
+                                        src={"http://54.155.93.184:8000" + rec.recommendation.images[0]}
                                         alt={"user image"}
                                         style={{minHeight: "200px", maxHeight: "200px", objectFit: "cover"}}
                                     />

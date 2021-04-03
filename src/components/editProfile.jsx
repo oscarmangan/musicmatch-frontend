@@ -241,7 +241,7 @@ class EditProfile extends Component {
         }
 
         //perform PATCH request to the API
-        fetch("http://127.0.0.1:8000/update_user/", {
+        fetch("http://54.155.93.184:8000/update_user/", {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',
@@ -288,7 +288,7 @@ class EditProfile extends Component {
 
     //function that once the user profile is created, generate their recommendations
     setRecommendations = (id) => {
-        fetch("http://127.0.0.1:8000/set_recommendations/", {
+        fetch("http://54.155.93.184:8000/set_recommendations/", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',

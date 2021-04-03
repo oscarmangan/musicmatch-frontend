@@ -18,7 +18,7 @@ class App extends Component {
         this.state = {
             isAuthorised: localStorage.getItem('id') ? true : false,
             id: localStorage.getItem('id'),
-            HOST: 'http://127.0.0.1:8000/'
+            HOST: 'http://54.155.93.184/:8000/'
         }
     }
 
